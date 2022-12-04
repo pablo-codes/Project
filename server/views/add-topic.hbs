@@ -1,0 +1,96 @@
+
+
+
+
+
+
+
+
+<div class="body-body">
+
+   <div class="top-body-1">
+
+   
+<div class="title">
+     <p> ADD TOPIC </p>
+</div>
+
+<!-- <div class="searchplus">
+
+    <input type="text" placeholder="search">
+
+    <svg  class="search-vg"   xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+
+</div> -->
+
+</div>
+
+
+<div class="container-form">
+
+
+  <form action="/add-topic"  enctype="multipart/form-data" method="post">
+    <div class="row">
+      <div class="col-25">
+        <label for="title">Title</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="title" name="title" placeholder="please ensure your title is unique ">
+      </div>
+    </div>
+ 
+     
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="role">role</label>
+      </div>
+      <div class="col-75">
+        <select id="role" name="role">
+          <option name="paid" value="paid">Paid</option>
+          <option name="free"  value="free">Free</option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-25">
+        <label for="descriptionm">Description</label>
+      </div>
+      <div class="col-75">
+        <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="features">Features</label>
+      </div>
+      <div class="col-75">
+        <textarea id="features" name="features" placeholder="Write something.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+     <label  for="files">input main image</label>
+     <input  id="files" type="file" name="files">
+    </div>
+    </div>
+      <div class="row">
+        <div class="col-25">
+     <label  for="files">input secondary image</label>
+     <input id="files" type="file" name="files">
+    </div>
+    </div>
+    
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+
+
+</div>
+</div>
+</body>
+</html>
+
+
