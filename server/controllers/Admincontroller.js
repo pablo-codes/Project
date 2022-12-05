@@ -66,4 +66,26 @@ const allAdminImages = async (req, res) => {
   }
 
 }
+const deleteUserTopicAndImages = async (req, res, nxt) => {
+
+  try {
+      const find = req.params.id
+
+      const newfind = find.split(":")
+
+      const found = await product.findOne({ _id: newfind[1] })
+
+     
+      if (found) {
+          await found.gridfileid.map((el) => {
+              gridFile.findByIdAndDelete(el)
+          })
+
+          const del = await product.findOneAndDelete({ _id: found })
+          res.redirect('/all-writers')
+      }
+  } catch (err) {
+      console.log(err)
+  }
+}
   module.exports = {admin,users,admins,allAdminImages,allAdminTopics}
