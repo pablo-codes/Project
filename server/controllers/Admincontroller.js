@@ -1,6 +1,7 @@
 const product = require('../models/productSchema')
 const gridFile = require('../models/GridFile')
 const user = require('../models/schema')
+const popups = require('popups')
 
 const admin =async(req,res)=>{
   try {
@@ -73,19 +74,30 @@ const deleteUserTopicAndImages = async (req, res, nxt) => {
 
       const newfind = find.split(":")
 
-      const found = await product.findOne({ _id: newfind[1] })
-
+      const founduser = await user.findOne({ _id: newfind[1] })
+      const found = await product.find({ author:founduser.username})
+    console.log(newfind,founduser,found)
      
-      if (found) {
-          await found.gridfileid.map((el) => {
-              gridFile.findByIdAndDelete(el)
-          })
+      if (founduser && found) {
+          
+           const first = await gridFile.deleteMany({aliases:founduser._id})
+        if (first){
+          const seco =await product.deleteMany({author:founduser.username})
+          if (seco){
+            const third = await user.findOneAndDelete({ _id: newfind[1] })
+            if(third){
+              res.redirect("/users")
+            }
+          }
+        }
 
-          const del = await product.findOneAndDelete({ _id: found })
-          res.redirect('/all-writers')
+           
+           
+           
       }
   } catch (err) {
       console.log(err)
+      res.redirect("/users")
   }
 }
-  module.exports = {admin,users,admins,allAdminImages,allAdminTopics}
+  module.exports = {admin,users,admins,allAdminImages,allAdminTopics,deleteUserTopicAndImages}
