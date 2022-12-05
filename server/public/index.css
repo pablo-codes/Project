@@ -1,34 +1,38 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
-    text-decoration: none;
-    color: initial;
+  text-decoration: none;
+  color: initial;
 }
 
 .container {
-    display: flex;
-    min-height: 870px;
+  display: flex;
+  min-height: 870px;
 }
 
 .side-bar {
-    width: 20%;
-    background-color: black;
-    min-height: 500px;
-    background-color: white;
+  width: 20%;
+  background-color: black;
+  min-height: 500px;
+  background-color: white;
 }
 
 .logo {
-    width: 100%;
-    height: 15%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
 }
 
-.logo-text {
-color:rgb(80, 80, 191);}
+.logo-text a {
+  color: rgb(80, 80, 191);
+}
+.logo-text a:hover {
+  color: black;
+}
 
 .body-body {
   width: 80%;
@@ -39,51 +43,46 @@ color:rgb(80, 80, 191);}
 }
 
 .top-body {
-background: linear-gradient(to right, rgb(80, 80, 191),  rgb(85, 85, 152)); 
-width: 100%;
-height: 37%;
-display: flex;
-align-items: flex-start;
-/* justify-content: center; */
-color: white;
-font-size: x-large;
-padding-left: 25px;
-
+  background: linear-gradient(to right, rgb(80, 80, 191), rgb(85, 85, 152));
+  width: 100%;
+  height: 37%;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: center; */
+  color: white;
+  font-size: x-large;
+  padding-left: 25px;
 }
 
 .top-body-1 {
-    background: linear-gradient(to right, rgb(80, 80, 191),  rgb(85, 85, 152)); 
-    width: 100%;
-    height: 17%;
-    display: flex;
-    align-items: flex-start;
-    /* justify-content: center; */
-    color: white;
-    font-size: x-large;
-    padding-left: 25px;
-    
-    }
-
-
+  background: linear-gradient(to right, rgb(80, 80, 191), rgb(85, 85, 152));
+  width: 100%;
+  height: 17%;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: center; */
+  color: white;
+  font-size: x-large;
+  padding-left: 25px;
+}
 
 .top-body input {
-    /* margin-top: 30px; */
-    background-color: transparent;
-    border-style: solid;
-    border-color: white;
-    border-width: 1px;
-    height: 40px;
-    width: 260px;
-    outline-style: none;
-    border-radius: 10px;
-    color: white;
-    padding-left: 15px;
-
+  /* margin-top: 30px; */
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  height: 40px;
+  width: 260px;
+  outline-style: none;
+  border-radius: 10px;
+  color: white;
+  padding-left: 15px;
 }
 
 .top-body input::placeholder {
-    color: white;
-    font-size: larger;
+  color: white;
+  font-size: larger;
 }
 
 /* .search-vg {
@@ -93,130 +92,126 @@ padding-left: 25px;
     width: ;
 } */
 
-
-
-
 .inside-body {
-    height: 63%;
-    width: 100%;
-    background-color: rgb(237, 237, 245);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    column-gap: 2%;
-    row-gap: -4%;
-    padding-bottom: 75px;
+  height: 63%;
+  width: 100%;
+  background-color: rgb(237, 237, 245);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2%;
+  row-gap: -4%;
+  padding-bottom: 75px;
 }
 
 .inside-body-1 {
-    height: 83%;
-    width: 100%;
-    background-color: rgb(237, 237, 245);
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* column-gap: 2%;
+  height: 83%;
+  width: 100%;
+  background-color: rgb(237, 237, 245);
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* column-gap: 2%;
     row-gap: -4%; */
-} 
-
-.box-1, .box-2, .box-3, .box-4 {
-    width: 35% ;
-    background-color: white;
-    border-style: none;
-    box-shadow: 3px 3px 5px rgb(223, 223, 223);
-    height: 195px;
-    border-radius: 3%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: x-large;
 }
 
-
+.box-1,
+.box-2,
+.box-3,
+.box-4 {
+  width: 35%;
+  background-color: white;
+  border-style: none;
+  box-shadow: 3px 3px 5px rgb(223, 223, 223);
+  height: 195px;
+  border-radius: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
 
 .menu-items {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 .mit {
-    /* background-color: pink; */
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
+  /* background-color: pink; */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
 .mit:hover {
-    /* background-color: rgb(244, 244, 244) ; */
-    border-left: solid 4px  rgb(80, 80, 191);
+  /* background-color: rgb(244, 244, 244) ; */
+  border-left: solid 4px rgb(80, 80, 191);
 }
 
 .inner-box-text {
-width: 55%;
-text-align: center;
-color: rgb(80, 80, 191);
+  width: 55%;
+  text-align: center;
+  color: rgb(80, 80, 191);
 }
 .inner-box-text h2 {
-    color: black;
+  color: black;
 }
 
-
 .icon-div {
-    width: 20%;
-
+  width: 20%;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
-    background-color: green;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 3px 3px 5px rgb(223, 223, 223);
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 3px 3px 5px rgb(223, 223, 223);
 }
 
 .icon-2 {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 255, 0.673);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 3px 3px 5px rgb(223, 223, 223);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 255, 0.673);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 3px 3px 5px rgb(223, 223, 223);
 }
 
 .icon-3 {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(128, 0, 128, 0.755);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 3px 3px 5px rgb(223, 223, 223);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(128, 0, 128, 0.755);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 3px 3px 5px rgb(223, 223, 223);
 }
 
 .icon-4 {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 0, 0, 0.646);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 3px 3px 5px rgb(223, 223, 223);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 0, 0, 0.646);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 3px 3px 5px rgb(223, 223, 223);
 }
 
 .title {
@@ -224,76 +219,73 @@ color: rgb(80, 80, 191);
 }
 
 .searchplus {
-    display: flex;
-   width: 50%;
-   height: 25%;
-   position: relative;
-   top: 50%;
-   right: 50%;
-   background-color: white;
+  display: flex;
+  width: 50%;
+  height: 25%;
+  position: relative;
+  top: 50%;
+  right: 50%;
+  background-color: white;
 }
-
 
 .searchplus button {
-    top:5% ;
-    position: absolute;
-    left: 80% ;
-    width: 20%;
-    background-color: black;
-} */
-table {
-    width: 75%;
-    border-collapse: collapse;
+  top: 5%;
+  position: absolute;
+  left: 80%;
+  width: 20%;
+  background-color: black;
 }
-body{
-    margin: 0%;
+*/ table {
+  width: 75%;
+  border-collapse: collapse;
+}
+body {
+  margin: 0%;
 }
 table thead {
-    background-color: rgb(85, 85, 152);
-    color: white;
-    height: 50px;
+  background-color: rgb(85, 85, 152);
+  color: white;
+  height: 50px;
 }
 
 table tbody tr {
-    height: 50px;
-    /* border-bottom: solid 1px black; */
+  height: 50px;
+  /* border-bottom: solid 1px black; */
 }
 
 tr:nth-child(even) {
-    background-color: rgb(213, 213, 244);
+  background-color: rgb(213, 213, 244);
 }
 
-
 .table-div {
-    margin-top: 25px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .form-div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 35px;
-    font-size: larger;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  font-size: larger;
 }
 
 .inner-form-div {
-    /* background-color: red; */
-    height: 50px;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    column-gap: 15px;
-    width: 100%;
+  /* background-color: red; */
+  height: 50px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  width: 100%;
 }
 
 .inner-form-div label {
-    width: 35%;
+  width: 35%;
 }
-
 
 /* form input {
     background-color: transparent;
@@ -310,125 +302,130 @@ tr:nth-child(even) {
 } */
 
 .add-new-button {
-    width: 100%;
-    background-color: black;
-    height: 50px;
-    margin-top: 25px;
-    color: white;
-    font-size: large;
-    border-style: none;
+  width: 100%;
+  background-color: black;
+  height: 50px;
+  margin-top: 25px;
+  color: white;
+  font-size: large;
+  border-style: none;
 }
-
 
 .select2 {
-    background-color: transparent;
-    border-style: none;
-    border-bottom-style: solid;
-    border-bottom-color: purple;
-    border-width: 1px;
-    height: 40px;
-    width: 100%;
-    outline-style: none;
-    color: black;
-    padding-left: 15px;
-    font-size: large;
+  background-color: transparent;
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: purple;
+  border-width: 1px;
+  height: 40px;
+  width: 100%;
+  outline-style: none;
+  color: black;
+  padding-left: 15px;
+  font-size: large;
 }
 /* Style inputs, select elements and textareas */
-input[type=text],[type=email],[type=password], select, textarea{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-  }
-  
-  /* Style the label to display next to the inputs */
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  }
-  
-  /* Style the submit button */
-  input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-  }
-  
-  /* Style the container */
-  .container-form {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  form{
-   width:100%;
-   height: 100%;
-   font-size: large;
-  }
-  /* Floating column for labels: 25% width */
-  .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-  }
-  
-   /* Floating column for labels: 25% width */
-   .col-50 {
-    float: left;
-    width: 50%;
-    margin-top: 6px;
-  }
+input[type="text"],
+[type="email"],
+[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
 
-  /* Floating column for inputs: 75% width */
-  .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .sign:hover{
-    color: purple;
-  }
-  .alert-div {
-    display: flex;
-    background-color: rgb(12, 191, 12);
-    width: 35%;
-    height: 50px;
-    border-radius: 5px;
-    color: white;
-    justify-content: center;
-    column-gap: 1%;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.container-form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+form {
+  width: 100%;
+  height: 100%;
+  font-size: large;
+}
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for labels: 25% width */
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.sign:hover {
+  color: purple;
+}
+.alert-div {
+  display: flex;
+  background-color: rgb(12, 191, 12);
+  width: 35%;
+  height: 50px;
+  border-radius: 5px;
+  color: white;
+  justify-content: center;
+  column-gap: 1%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .alert-div .sp1 {
-    text-align: center;
-    width: 80%;
+  text-align: center;
+  width: 80%;
 }
 
 .alert-div .sp2 {
-    text-align: center;
-    width: 10%
+  text-align: center;
+  width: 10%;
 }
-  
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
   }
+}

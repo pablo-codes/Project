@@ -17,9 +17,9 @@ const cookie = require('cookie-parser')
 const dotenv = require('dotenv')
 const multer = require('multer')
 const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage } = require('./controllers/Usercontroller')
-const { admin, admins, users, allAdminImages, allAdminTopics,deleteUserTopicAndImages } = require('./controllers/Admincontroller')
+const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages } = require('./controllers/Admincontroller')
 const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
-const methodOverride = require('method-override');
+
 
 const upload = multer({ dest: path.join(__dirname, '../files') })
 dotenv.config({ path: path.join(__dirname, './config.env') })
@@ -45,7 +45,7 @@ app.use(cookie());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
-app.use(methodOverride("_method"))
+
 
 app.engine(
   ".hbs",
@@ -63,9 +63,9 @@ app.engine(
 app.set("view engine", ".hbs");
 
 
-app.get("/:name", auth, index);
+app.get("/", auth, index);
 
-app.get('/admin/:name', adminauth, admin)
+app.get('/admin', adminauth, admin)
 
 app.get("/all-users", async (req, res) => {
 
