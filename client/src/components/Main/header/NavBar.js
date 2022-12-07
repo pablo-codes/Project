@@ -52,10 +52,10 @@ const NavBar = (props) => {
           <div className="offcanvas-body ms-lg-auto d-flex flex-column h-100">
             <ul className="navbar-nav">
               <li className="nav-item dropdown dropdown-mega">
-                <a className="nav-link dropdown-toggle" href="https://sandbox.elemisthemes.com/blog-post2.html#" data-bs-toggle="dropdown">Home</a>
+                <a className="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">Home</a>
               </li>
               <li className="nav-item dropdown dropdown-mega">
-                <a className="nav-link dropdown-toggle" href="https://sandbox.elemisthemes.com/blog-post2.html#" data-bs-toggle="dropdown">Products</a>
+                <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
                 <ul className="dropdown-menu mega-menu mega-menu-dark mega-menu-img">
                   <li className="mega-menu-content mega-menu-scroll">
                     <ul className="row row-cols-1 row-cols-lg-6 gx-0 gx-lg-4 gy-lg-2 list-unstyled">
@@ -63,7 +63,7 @@ const NavBar = (props) => {
 
                         return <Link to={"/products/:" + el._id}>
                           <li className="col">
-                            <figure className="rounded lift d-none d-lg-block"><img src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" /></figure>
+                            <figure className="rounded lift d-none d-lg-block"><img src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" width="5%" /></figure>
                             <span className="d-lg">{el.title}</span>
                           </li>
                         </Link>
@@ -88,7 +88,7 @@ const NavBar = (props) => {
                 <ul className="dropdown-menu mega-menu mega-menu-dark mega-menu-img">
                   <li className="mega-menu-content">
                     <ul className="row row-cols-1 row-cols-lg-6 gx-0 gx-lg-6 gy-lg-4 list-unstyled">
-                      <li className="col"><a className="dropdown-item" href="https://sandbox.elemisthemes.com/docs/blocks/about.html">
+                      <li className="col"><a className="dropdown-item" href="https://github.com/pablo-codes">
                         <div className="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img className="rounded-0" src='' alt="" /></div>
                         <span>About</span>
                       </a>
@@ -112,7 +112,7 @@ const NavBar = (props) => {
           <ul className="navbar-nav flex-row align-items-center ms-auto">
             <li className="nav-item"><a className="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search"><i className="uil uil-search"></i></a></li>
             <li className="nav-item d-none d-md-block">
-              <a href="http://localhost:2500" className="btn btn-sm btn-white rounded-pill">Write</a>
+              <a href="http://localhost:2500" target="_blank" className="btn btn-sm btn-white rounded-pill">Write</a>
             </li>
             <li className="nav-item d-lg-none">
               <button className="hamburger offcanvas-nav-btn" onClick={openNav}><span></span></button>

@@ -1,9 +1,10 @@
-input[type=text], textarea{
+input[type="text"],
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  
+
   resize: vertical;
 }
 
@@ -14,9 +15,9 @@ label {
 }
 
 /* Style the submit button */
-input[type=submit] {
+input[type="submit"] {
   box-sizing: border-box;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -26,32 +27,32 @@ input[type=submit] {
 }
 
 /* Style the container */
-.container-form {
+.containerform {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
 }
-form{
- width:100%;
- height: 100%;
- font-size: large;
+form {
+  width: 100%;
+  height: 100%;
+  font-size: large;
 }
 /* Floating column for labels: 25% width */
-.col-25 {
+.col25 {
   float: left;
   width: 25%;
   margin-top: 6px;
 }
 
- /* Floating column for labels: 25% width */
- .col-50 {
+/* Floating column for labels: 25% width */
+.col50 {
   float: left;
   width: 50%;
   margin-top: 6px;
 }
 
 /* Floating column for inputs: 75% width */
-.col-75 {
+.col75 {
   float: left;
   width: 75%;
   margin-top: 6px;
@@ -63,24 +64,21 @@ form{
   display: table;
   clear: both;
 }
-.container{
-  
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   min-height: 870px;
 }
 
-.body-body2{
-      
- 
+.body2 {
   width: 80%;
   background-color: #f2f2f2;
   min-height: 500px;
   display: flex;
   flex-direction: column;
-} 
-.top-body-2{
-  background: linear-gradient(to right, rgb(80, 80, 191),  rgb(85, 85, 152));
+}
+.top {
+  background: linear-gradient(to right, rgb(80, 80, 191), rgb(85, 85, 152));
   width: 100%;
   height: 17%;
   display: flex;
@@ -91,7 +89,9 @@ form{
 }
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
     width: 100%;
     margin-top: 0;
   }

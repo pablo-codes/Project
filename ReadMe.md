@@ -36,6 +36,11 @@ make sure you create a user before you enter the client
      1 click on the pen icon in the topic you want to update
      ps: your client should be running
 
+# How to Update Images
+
+     1 click on the image in the edit page and you will get a list of images to update from
+     ps: your client should be running
+
 ## 👷 Built with!
 
 Frontend:

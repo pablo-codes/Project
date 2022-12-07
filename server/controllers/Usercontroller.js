@@ -19,7 +19,6 @@ const index = async (req, res) => {
         const allImages = await gridFile.count({ aliases: users })
         const username = topics.username.toUpperCase()
 
-        console.log(news, stuff)
         res.render("index", { alltotal, topics, allImages, username });
     } catch (error) {
         console.log(error)
@@ -207,7 +206,7 @@ const getImages = async (req, res) => {
 // Update's topic with axios
 const updateTopic = async (req, res) => {
     const id = req.params.id;
-    console.log(id)
+
     const newid = id.split(":", 2)
 
     product.findOneAndUpdate({ _id: newid[1] }, req.body, { useFindAndModify: false })
