@@ -19,11 +19,7 @@ const index = async (req, res) => {
         const allImages = await gridFile.count({ aliases: users })
         const username = topics.username.toUpperCase()
 
-        const get = await product.findOne({ author: topics.username })
-        const news = get.gridfilename.set(0, "cloud upgrade.png")
-        await get.save()
-
-        console.log(news)
+        console.log(news, stuff)
         res.render("index", { alltotal, topics, allImages, username });
     } catch (error) {
         console.log(error)
@@ -83,7 +79,7 @@ const getTopic = async (req, res) => {
         if (GridFile) {
 
             // put in the relative path of the folder(i.e local folder, internet folder)
-            const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/${GridFile.filename}`))
+            const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${GridFile.filename}`))
             await GridFile.download(fileStream)
 
 
@@ -211,7 +207,7 @@ const getImages = async (req, res) => {
 // Update's topic with axios
 const updateTopic = async (req, res) => {
     const id = req.params.id;
-
+    console.log(id)
     const newid = id.split(":", 2)
 
     product.findOneAndUpdate({ _id: newid[1] }, req.body, { useFindAndModify: false })
@@ -227,6 +223,38 @@ const updateTopic = async (req, res) => {
                 message: "Error updating Tutorial with id=" + id
             });
         });
+}
+const updateImage = async (req, res) => {
+    const id = req.params.id;
+    const { array3, array4 } = req.body
+
+
+    const newid = id.split(":", 2)
+    const get = await product.findOne({ _id: newid[1] })
+
+
+    if (array3[0]) {
+        const newarray3 = array3.split(",", 2)
+
+        get.gridfilename.set(0, newarray3[0])
+        get.gridfileid.set(0, newarray3[1])
+        await get.save()
+
+
+    }
+
+    if (array4[0]) {
+        const newarray4 = array4.split(",", 2)
+        get.gridfilename.set(1, newarray4[0])
+        get.gridfileid.set(1, newarray4[1])
+        await get.save()
+
+    }
+
+
+
+
+
 }
 
 // Delete's topic and all related images
@@ -283,4 +311,4 @@ const searchImages = async (req, res) => {
     }
     res.render("searchpage-images", { searching })
 }
-module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics }
+module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, searchImages, searchTopics }

@@ -69,7 +69,7 @@ const registerUser = async (req, res) => {
         );
 
 
-        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
+        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
         const Get = await user.findOne({ email: req.body.email })
 
         res.cookie("user", Get._id, { maxAge: 36e5 })
@@ -103,7 +103,7 @@ const registerUser = async (req, res) => {
         );
 
 
-        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
+        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
         const Get = await user.findOne({ email: req.body.email })
 
         res.cookie("user", Get._id, { maxAge: 36e5 })
@@ -173,7 +173,7 @@ const loginUser = async (req, res, next) => {
           );
 
 
-          const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
+          const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
           const Get = await user.findOne({ email: req.body.email })
 
           res.cookie("user", Get._id, { maxAge: 36e5 })

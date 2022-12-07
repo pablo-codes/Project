@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './AddUser.module.css'
+import './AddUser.css'
 import { useState, useEffect } from 'react'
 
 import { useParams } from 'react-router-dom'
@@ -13,12 +13,40 @@ const AddUser = () => {
     id: null,
     title: "",
     author: "",
+    role: "",
     description: "",
     features: "",
-    gridfilename: []
+    gridfilename: [],
+    gridfileid: []
   };
   const [products, setProducts] = useState(initialProducts);
 
+  const [images, setImages] = useState([]);
+
+
+  const newInitialImages = {
+    array3: [],
+    array4: []
+  };
+  const [newImages, setNewImages] = useState(newInitialImages);
+
+  const responses = (id) => {
+    blogService.getImages(id)
+      .then((response) => {
+        setImages(response.data);
+
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+  let array1 = [products.gridfilename[0], products.gridfileid[0]]
+  let array2 = [products.gridfilename[1], products.gridfileid[2]]
+  useEffect(() => {
+    responses(id)
+
+
+  }, [id])
 
   const response = (id) => {
     blogService.get(id)
@@ -41,17 +69,37 @@ const AddUser = () => {
     setProducts({ ...products, [name]: value });
 
   };
+  const handleSelectChange = event => {
 
-  const updateTutorial = () => {
-    blogService.update(products.id, products)
+    const { name, value } = event.target;
+    setNewImages({ ...newImages, [name]: value });
+
+
+  };
+
+  const blogServiceTopic = () => {
+
+    blogService.blogService(id, products)
       .then(response => {
-        console.log(response.data);
-        console.log("The tutorial was updated successfully!");
+
+        console.log("The tutorial was blogServiced successfully!");
       })
       .catch(e => {
         console.log(e);
       });
+
+    blogService.blogServiceImages(id, newImages)
+      .then(response => {
+
+        console.log("The tutorial was blogServiced successfully!");
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
   };
+
+
 
 
 
@@ -100,12 +148,27 @@ const AddUser = () => {
           </div>
           <div className="row">
             <div className="col-25">
-              <label htmlFor="role">images</label>
+              <label htmlFor="image"> Image</label>
             </div>
-            <div className="col-75">
-              <select id="role" name="role" onChange={handleInputChange} value="choose" >
-                <option name="admin" value={products.gridfilename[0]}>{products.gridfilename[0]}</option>
-                <option name="user" value={products.gridfilename[1]}>{products.gridfilename[1]}</option>
+            <div className="col-25">
+              <select id="image" onChange={handleSelectChange} name="array3"  >
+                <option name={products.gridfilename[0]} onChange={handleSelectChange} value={array1}>{products.gridfilename[0]}</option>
+                {images && images.map((el) => {
+                  newInitialImages.array3 = [el.filename, el._id]
+                  return <option name={products.gridfilename[0]} onChange={handleSelectChange} value={newInitialImages.array3}>{el.filename}</option>
+                })}
+              </select>
+            </div>
+            <div className="col-25">
+              <select id="image" onChange={handleSelectChange} name="array4"  >
+                <option name={products.gridfilename[1]} onChange={handleSelectChange} value={array2}>{products.gridfilename[1]}</option>
+                {images && images.map((el) => {
+                  newInitialImages.array4 = [el.filename, el._id]
+
+                  return <option name={products.gridfilename[1]} onChange={handleSelectChange} value={newInitialImages.array4}>{el.filename}</option>
+
+
+                })}
               </select>
             </div>
           </div>
@@ -125,21 +188,21 @@ const AddUser = () => {
               <textarea id="subject" name="features" onChange={handleInputChange} value={products.features} placeholder="Write something.." style={{ height: "200px" }}></textarea>
             </div>
           </div>
-          {/* <div className="row">
-        <div className="col-25">
-     <label  htmlFor="">input main image</label>
-     <input type="file" name="files"/>
-    </div>
-    </div>
-      <div className="row">
-        <div className="col-25">
-     <label  htmlFor="">input secondary image</label>
-     <input type="file" name="files"/>
-    </div>
-    </div> */}
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="">input main image</label>
+              <input type="file" name="files" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-25">
+              <label htmlFor="">input secondary image</label>
+              <input type="file" name="files" />
+            </div>
+          </div>
 
           <div className="row">
-            <input type="submit" value="Submit" onClick={updateTutorial} />
+            <input type="submit" value="Submit" onClick={blogServiceTopic} />
           </div>
         </form>
 
