@@ -6,7 +6,7 @@ const SectionB = (props) => {
   
   function change (){
     
-    setPicture( require(`../../../images/${props.image[1]}`))
+    setPicture( require(`../../../images/dynamic/${props.image[1]}`))
     
   }
   

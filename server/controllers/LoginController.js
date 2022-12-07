@@ -3,12 +3,17 @@ const user = require('../models/schema')
 const path = require('path')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '../config.env') })
-const cookie = require('cookie-parser');
-const { nextTick } = require("process");
+
+
+
+
+// Get's register page
 const register = (req, res) => {
-  res.render("register", { alert: "ensure email is unique" });
+  res.render("register");
 }
 
+
+// Get's login page
 const login = async (req, res) => {
   try {
 
@@ -19,35 +24,32 @@ const login = async (req, res) => {
 
 }
 
-
+// Creates a user
 const registerUser = async (req, res) => {
-
-
-
-  // Our register logic starts here
   try {
-    // Get user input
+
     const body = req.body;
 
-    // Validate user input
-
-
-    // check if user already exist
-    // Validate if user exist in our database
     const oldEmail = await user.findOne({ email: body.email });
     const oldUser = await user.findOne({ username: body.username });
+
     if (oldEmail) {
-      return res.status(409).send(` ${body.email} Already Exists`)
+      const email = body.email
+      res.render("register", { email })
     }
+
     else if (oldUser) {
-      return res.status(409).send(` ${body.username} Already Exists`);
-    } else {
+      const username = body.username
+      return res.render("register", { username });
+    }
+
+    else {
       if (body.email == process.env.EMAIL && body.password == process.env.PASSWORD) {
         const saltround = 10
-        //Encrypt user password
+
+
         const encryptedUserPassword = await bcrypt.hash(body.password, saltround);
 
-        // Create user in our database
         await user.create({
           name: body.name,
           username: body.username,
@@ -57,7 +59,7 @@ const registerUser = async (req, res) => {
           email: body.email
         });
 
-        // Create token
+
         const token = jwt.sign(
           { user_id: user._id, email: body.email },
           process.env.ADMIN_KEY,
@@ -65,23 +67,23 @@ const registerUser = async (req, res) => {
             expiresIn: 36e5,
           }
         );
-        // save user token
+
 
         const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
         const Get = await user.findOne({ email: req.body.email })
 
         res.cookie("user", Get._id, { maxAge: 36e5 })
         res.cookie('admin_key', token)
-        // return new user
+
         res.redirect("/admin")
       }
 
       else {
         const saltround = 10
-        //Encrypt user password
+
         const encryptedUserPassword = await bcrypt.hash(body.password, saltround);
 
-        // Create user in our database
+
         await user.create({
           name: body.name,
           username: body.username,
@@ -91,7 +93,7 @@ const registerUser = async (req, res) => {
           email: body.email
         });
 
-        // Create token
+
         const token = jwt.sign(
           { user_id: user._id, email: body.email },
           process.env.TOKEN_KEY,
@@ -99,7 +101,7 @@ const registerUser = async (req, res) => {
             expiresIn: 36e5,
           }
         );
-        // save user token
+
 
         const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
         const Get = await user.findOne({ email: req.body.email })
@@ -107,7 +109,7 @@ const registerUser = async (req, res) => {
         res.cookie("user", Get._id, { maxAge: 36e5 })
 
         res.cookie('token_key', token)
-        // return new user
+
         res.redirect("/")
       }
     }
@@ -118,85 +120,85 @@ const registerUser = async (req, res) => {
   }
 
 }
+
+// Sign in to a loser
 const loginUser = async (req, res, next) => {
 
 
+  try {
+    const body = req.body
 
-  const body = req.body
+    const users = await user.findOne({ email: body.email });
 
+    if (users) {
 
-  const users = await user.findOne({ email: body.email });
-
-  if (users) {
-
-
-    if (body.email == process.env.EMAIL && body.password == process.env.PASSWORD) {
-      if (bcrypt.compareSync(body.password, users.password)) {
-        //Create token
+      if (body.email == process.env.EMAIL && body.password == process.env.PASSWORD) {
+        if (bcrypt.compareSync(body.password, users.password)) {
 
 
+          const token = jwt.sign(
+            { users_id: users._id, email: req.body.email },
+            process.env.ADMIN_KEY,
+            {
+              expiresIn: 36e5,
+            }
+          );
 
-        const token = jwt.sign(
-          { users_id: users._id, email: req.body.email },
-          process.env.ADMIN_KEY,
-          {
-            expiresIn: 36e5,
-          }
-        );
+          const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
+          const Get = await user.findOne({ email: req.body.email })
 
-        // save user token
-        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
-        const Get = await user.findOne({ email: req.body.email })
+          res.cookie("user", Get._id, { maxAge: 36e5 })
+          res.cookie("admin_key", token)
 
-        res.cookie("user", Get._id, { maxAge: 36e5 })
-        res.cookie("admin_key", token)
-        // user
-        res.redirect('/admin');
+          res.redirect('/admin');
+        }
+
+        else {
+
+          let check = "invalid Password"
+          res.render("login", { check });
+        }
+      }
+
+      else if (body.email !== process.env.EMAIL && body.password !== process.env.PASSWORD) {
+        if (bcrypt.compareSync(body.password, users.password)) {
+
+
+          const token = jwt.sign(
+            { users_id: users._id, email: req.body.email },
+            process.env.TOKEN_KEY,
+            {
+              expiresIn: 36e5,
+            }
+          );
+
+
+          const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
+          const Get = await user.findOne({ email: req.body.email })
+
+          res.cookie("user", Get._id, { maxAge: 36e5 })
+          res.cookie("token_key", token)
+
+          res.redirect('/');
+
+        }
+        else {
+          let check = "invalid Password"
+          res.render("login", { check });
+        }
       } else {
-
-        res.status(400).send("Invalid Password");
-
+        console.log("err")
       }
-    } else if (body.email !== process.env.EMAIL && body.password !== process.env.PASSWORD) {
-      if (bcrypt.compareSync(body.password, users.password)) {
-        // Create token
 
-        const token = jwt.sign(
-          { users_id: users._id, email: req.body.email },
-          process.env.TOKEN_KEY,
-          {
-            expiresIn: 36e5,
-          }
-        );
-
-        // save user token
-        const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { $push: { token: token } }, { upsert: true })
-        const Get = await user.findOne({ email: req.body.email })
-
-        res.cookie("user", Get._id, { maxAge: 36e5 })
-        res.cookie("token_key", token)
-        // user
-        res.redirect('/');
-
-      }
-      else {
-        res.status(400).send("Invalid Password");
-      }
-    } else {
-      res.status(400).send("Invalid Password");
     }
-
-
-
-
-
-
-
-
-    // Our login logic ends here
-  } else {
-    res.send("user not found")
+    else {
+      let check2 = "invalid user"
+      res.render("login", { check2 });
+    }
+  } catch (error) {
+    console.log(error)
   }
+
 }
 
 

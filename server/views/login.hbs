@@ -1,9 +1,31 @@
 
 
 
+{{#if check}}
+<link rel="stylesheet" href="popupS.css"/>
+<script src="popupS.js"></script>
+<script>
+    
+    popupS.alert({
+        content:{
+          css: {width: "100%",height:"50%",position:"relative",bottom:"100%",color:"green"},
+       html: "<h1>Incorrect Password</h1>" }
+      })
+</script>
+{{/if}}
 
-
-
+{{#if check2}}
+<link rel="stylesheet" href="popupS.css"/>
+<script src="popupS.js"></script>
+<script>
+    
+    popupS.alert({
+        content:{
+          css: {width: "100%",height:"50%",position:"relative",bottom:"100%",color:"green"},
+       html: "<h1>Incorrect Email</h1>" }
+      })
+</script>
+{{/if}}
 
 
 <div class="body-body">
@@ -36,8 +58,8 @@
       <div class="col-25">
         <label for="email">Email</label>
       </div>
-      <div class="col-75">
-        <input type="text" id="email" name="email" placeholder="please inpu your name ">
+      <div class="col-25">
+        <input type="text" id="email" name="email" placeholder="please input your email ">
       </div>
     </div>
   
@@ -49,7 +71,7 @@
       <div class="col-25">
         <label for="password">Password</label>
       </div>
-      <div class="col-75">
+      <div class="col-25">
         <input type="password" id="password" name="password" placeholder="please input your password ">
       </div>
     </div>

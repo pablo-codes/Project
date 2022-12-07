@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const user = require('../models/schema')
 const config = process.env;
 
+
+// Verify's Admin
 const verifyToken = async (req, res, next) => {
   const token =
     req.cookies.admin_key;
@@ -22,7 +24,8 @@ const verifyToken = async (req, res, next) => {
     return next();
   }
   else {
-    return res.status(401).send("Invalid Password");
+    // res.status(401).send("Invalid Password");
+    res.redirect('/login');
   }
 
 

@@ -3,18 +3,18 @@ import React from 'react'
 const SectionA = (props) => {
 
   // const picget = require(`../../../images/${pic}`)
-//   console.log(pic)
-function change (){
-  let pics = props.image[0]
-  const pic = require(`../../../images/${pics}`)
-  document.getElementById('images').style.backgroundImage=`url(${pic})`
-}
-const getDate =  new Date(props.date).toLocaleString()
+  //   console.log(pic)
+  function change() {
+    let pics = props.image[0]
+    const pic = require(`../../../images/dynamic/${pics}`)
+    document.getElementById('images').style.backgroundImage = `url(${pic})`
+  }
+  const getDate = new Date(props.date).toLocaleString()
 
 
   return (
-    <section id="images"className="wrapper image-wrapper bg-image bg-overlay text-white" onMouseEnter={change}  >
-      
+    <section id="images" className="wrapper image-wrapper bg-image bg-overlay text-white" onMouseEnter={change}  >
+
       <div className="container pt-18 pb-15 pt-md-20 pb-md-19 text-center">
         <div className="row">
           <div className="col-md-10 col-xl-8 mx-auto">

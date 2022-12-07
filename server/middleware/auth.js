@@ -3,6 +3,7 @@ const user = require('../models/schema')
 
 const config = process.env;
 
+// Verify's user 
 const verifyToken = async (req, res, next) => {
   const token =
     req.cookies.token_key;
@@ -23,7 +24,9 @@ const verifyToken = async (req, res, next) => {
     }
     return next();
   } else {
-    return res.status(404).send("Invalid User")
+    // res.status(404).send("Invalid User")
+
+    res.redirect('login');
   }
 
 

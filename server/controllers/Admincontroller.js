@@ -2,7 +2,7 @@ const product = require('../models/productSchema')
 const gridFile = require('../models/GridFile')
 const user = require('../models/schema')
 
-
+// Dashboard
 const admin = async (req, res) => {
   try {
 
@@ -16,59 +16,77 @@ const admin = async (req, res) => {
 
     res.render('admin', { alltotal, admintotal, userstotal, sec, username, layout: "adminlay" })
   } catch (error) {
-
+    console.log(error)
   }
 
 }
 
+// Gets all users which role is user
 const users = async (req, res) => {
-  const reg = await user.find({ role: "user" });
-
-  res.render("users", { reg, layout: "adminlay" })
-}
-
-const admins = async (req, res) => {
-  const prem = await user.find({ role: "admin" });
-  const getDate = new Date(prem.createdAt).toLocaleString()
 
 
-  res.render("admins", { prem, getDate, layout: "adminlay" })
-}
-const allAdminTopics = async (req, res, next) => {
+
   try {
+    const reg = await user.find({ role: "user" });
+    // const getDate = reg.map((el) => {
+    //   return { date: new Date(el.createdAt).toLocaleString() }
+    // })
+
+    // console.log(getDate)
+
+    res.render("users", { reg, layout: "adminlay" })
+  } catch (error) {
+    console.log(error)
+    res.redirect("/admin")
+  }
+}
+
+// Gets all users which role is admin
+const admins = async (req, res) => {
+  try {
+    const prem = await user.find({ role: "admin" });
+    const getDate = new Date(prem.createdAt).toLocaleString()
 
 
+    res.render("admins", { prem, getDate, layout: "adminlay" })
+  } catch (error) {
+    console.log(error)
+    res.redirect("/admin")
+  }
 
+}
+
+
+// Get all topics in the database
+const allAdminTopics = async (req, res) => {
+  try {
     const all = await product.find({})
 
-
-
-    res.render("all-writers", { all, layout: "adminlay" });
+    res.render("all-topics", { all, layout: "adminlay" });
   } catch (error) {
+    console.log(error)
 
-    res.render("login")
+    res.redirect("/admin")
 
   }
-
-
-
 }
+
+// Get's all images in the database
 const allAdminImages = async (req, res) => {
   try {
 
-
-
-
     const all = await gridFile.find({})
-
-
     res.render("all-images", { all, layout: "adminlay" });
   } catch (error) {
-    res.render("login")
+    console.log(error)
+    res.redirect("/admin")
 
   }
 
 }
+
+// Delete's user along with all related topics and images
+
 const deleteUserTopicAndImages = async (req, res, nxt) => {
 
   try {
@@ -83,7 +101,11 @@ const deleteUserTopicAndImages = async (req, res, nxt) => {
     if (founduser && found) {
 
 
-      const first = await gridFile.deleteMany({ aliases: founduser._id })
+      const first = await gridFile.find({ aliases: founduser._id })
+      first.map(async (el) => {
+        await gridFile.findByIdAndDelete(el.id)
+
+      })
       if (first) {
         const seco = await product.deleteMany({ author: founduser.username })
         if (seco) {
@@ -100,7 +122,7 @@ const deleteUserTopicAndImages = async (req, res, nxt) => {
     }
   } catch (err) {
     console.log(err)
-    res.redirect("/users")
+    res.redirect("/admin")
   }
 }
 module.exports = { admin, users, admins, allAdminImages, allAdminTopics, deleteUserTopicAndImages }

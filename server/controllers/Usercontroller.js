@@ -1,6 +1,5 @@
 
 const fs = require("fs");
-
 const jwt = require('jsonwebtoken')
 const path = require('path')
 const multer = require('multer')
@@ -10,22 +9,31 @@ const user = require('../models/schema')
 
 const upload = multer({ dest: path.join(__dirname, '../files') })
 
-const index =
-    async (req, res) => {
-        try {
-            const users = req.cookies.user
-            const topics = await user.findOne({ _id: users })
+// Dashboard
+const index = async (req, res) => {
+    try {
+        const users = req.cookies.user
+        const topics = await user.findOne({ _id: users })
 
-            const alltotal = await product.count({ author: topics.username });
-            const allImages = await gridFile.count({ aliases: users })
-            const username = topics.username.toUpperCase()
-            res.render("index", { alltotal, topics, allImages, username });
-        } catch (error) {
+        const alltotal = await product.count({ author: topics.username });
+        const allImages = await gridFile.count({ aliases: users })
+        const username = topics.username.toUpperCase()
 
-            res.render("login")
-        }
+        const get = await product.findOne({ author: topics.username })
+        const news = get.gridfilename.set(0, "cloud upgrade.png")
+        await get.save()
 
+        console.log(news)
+        res.render("index", { alltotal, topics, allImages, username });
+    } catch (error) {
+        console.log(error)
+
+        res.redirect("/login")
     }
+
+}
+
+// Get's all topics related to user
 const allTopics = async (req, res, next) => {
     try {
         const id = req.cookies.user
@@ -35,17 +43,32 @@ const allTopics = async (req, res, next) => {
 
         const getDate = new Date(get.createdAt).toLocaleString()
 
-        res.render("all-writers", { all });
+        res.render("all-topics", { all });
     } catch (error) {
 
-        res.render("login")
-
+        res.redirect("/")
     }
-
-
-
 }
 
+
+
+const getALLImages = async (req, res) => {
+
+    const find = req.params.id
+
+    const newfind = find.split(":", 2)
+
+    const get = await product.findOne({ _id: newfind[1] })
+    const news = await user.findOne({ username: get.author })
+
+    const all = await gridFile.find({ aliases: news._id })
+
+
+    res.send(all);
+}
+
+
+// Get's a topic with axios
 const getTopic = async (req, res) => {
     const find = req.params.id
 
@@ -59,7 +82,7 @@ const getTopic = async (req, res) => {
 
         if (GridFile) {
 
-            // put in the relative path of the folder
+            // put in the relative path of the folder(i.e local folder, internet folder)
             const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/${GridFile.filename}`))
             await GridFile.download(fileStream)
 
@@ -75,11 +98,10 @@ const getTopic = async (req, res) => {
 
     const all = await product.findOne({ _id: newfind[1] })
 
-
-
     res.send(all)
 }
 
+// Get's all images
 const allImages = async (req, res) => {
     try {
         const id = req.cookies.user
@@ -91,12 +113,12 @@ const allImages = async (req, res) => {
 
         res.render("all-images", { all });
     } catch (error) {
-        res.render("login")
+        res.redirect("/")
 
     }
-
 }
 
+// Add's a topic 
 const addTopic = async (req, res, next) => {
     try {
         const body = req.body;
@@ -135,18 +157,17 @@ const addTopic = async (req, res, next) => {
             })
 
             await Promise.all(promises)
-
-
         }
-
+        res.redirect("all-topics")
     } catch (error) {
-        res.render("login")
+        res.redirect("/")
 
     }
 
-    res.redirect("all-writers")
+
 }
 
+// Add's an image
 const addImage = async (req, res) => {
     if (req.files) {
         const promises = req.files.map(async (file) => {
@@ -174,6 +195,7 @@ const addImage = async (req, res) => {
     res.redirect("/all-images")
 }
 
+// Download's an image
 const getImages = async (req, res) => {
     const { name, id } = req.params
 
@@ -185,9 +207,13 @@ const getImages = async (req, res) => {
     res.attachment(newname[1])
     await GridFile.downloadStream(res)
 }
+
+// Update's topic with axios
 const updateTopic = async (req, res) => {
     const id = req.params.id;
+
     const newid = id.split(":", 2)
+
     product.findOneAndUpdate({ _id: newid[1] }, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
@@ -203,6 +229,7 @@ const updateTopic = async (req, res) => {
         });
 }
 
+// Delete's topic and all related images
 const deleteTopicAndImages = async (req, res, nxt) => {
 
     try {
@@ -219,13 +246,16 @@ const deleteTopicAndImages = async (req, res, nxt) => {
             })
 
             const del = await product.findOneAndDelete({ _id: found })
-            res.redirect('/all-writers')
+            res.redirect('/all-topics')
         }
     } catch (err) {
+
         console.log(err)
+        res.redirect('/all-topics')
     }
 }
 
+//Searches for topic
 const searchTopics = async (req, res) => {
     try {
         const users = req.cookies.user
@@ -236,13 +266,9 @@ const searchTopics = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-
-
-
-
 }
 
+//Searches for images
 const searchImages = async (req, res) => {
     const users = req.cookies.user
     const search = req.body.search
@@ -255,8 +281,6 @@ const searchImages = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-
     res.render("searchpage-images", { searching })
 }
-module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics }
+module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics }

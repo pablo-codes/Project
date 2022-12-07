@@ -3,7 +3,31 @@
 
 
 
+{{#if username}}
+<link rel="stylesheet" href="popupS.css"/>
+<script src="popupS.js"></script>
+<script>
+    
+    popupS.alert({
+        content:{
+          css: {width: "100%",height:"50%",position:"relative",bottom:"100%",color:"green"},
+       html: "<h1>username already exists</h1>" }
+      })
+</script>
+{{/if}}
 
+{{#if email}}
+<link rel="stylesheet" href="popupS.css"/>
+<script src="popupS.js"></script>
+<script>
+    
+    popupS.alert({
+        content:{
+          css: {width: "100%",height:"50%",position:"relative",bottom:"100%",color:"green"},
+       html: "<h1>email already exists</h1>" }
+      })
+</script>
+{{/if}}
 
 
 <div class="body-body">
@@ -28,7 +52,7 @@
         <label for="username">Username</label>
       </div>
       
-      <div class="col-75">
+      <div class="col-25">
         <input type="text"  id="username" name="username" placeholder="your username">
       </div>
     </div>
@@ -37,7 +61,7 @@
       <div class="col-25">
         <label for="password">Password</label>
       </div>
-      <div class="col-75">
+      <div class="col-25">
         <input type="password" id="password" name="password" placeholder="please input your password ">
       </div>
     </div>
@@ -46,8 +70,8 @@
       <div class="col-25">
         <label for="email">Email</label>
       </div>
-      <div class="col-75">
-        <input type="email" id="email" name="email" placeholder="please input your name ">
+      <div class="col-25">
+        <input type="email" id="email" name="email" placeholder="please input your email ">
       </div>
     </div>
   
@@ -55,9 +79,10 @@
       <div class="col-25">
         <label for="gender">Gender</label>
       </div>
-      <div class="col-75">
+      <div class="col-25">
         <select id="gender" name="gender">
           <option name="male" value="male">Male</option>
+          <option name="male" value="male">Does not wish to say</option>
           <option name="female"  value="female">Female</option>
         </select>
       </div>

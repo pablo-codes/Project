@@ -16,7 +16,7 @@ const jwt = require('jsonwebtoken')
 const cookie = require('cookie-parser')
 const dotenv = require('dotenv')
 const multer = require('multer')
-const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage } = require('./controllers/Usercontroller')
+const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages } = require('./controllers/Usercontroller')
 const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages } = require('./controllers/Admincontroller')
 const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
 
@@ -39,6 +39,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/usersystemNG").then(() => {
 var corsOptions = {
   origin: 'http://localhost:3000'
 };
+
+//  Middlewares
 
 app.use(cors(corsOptions));
 app.use(cookie());
@@ -63,11 +65,12 @@ app.engine(
 app.set("view engine", ".hbs");
 
 
+//  Routes
 app.get("/", auth, index);
 
 app.get('/admin', adminauth, admin)
 
-app.get("/all-users", async (req, res) => {
+app.get("/all-blogs", async (req, res) => {
 
   const all = await product.find({})
 
@@ -75,18 +78,22 @@ app.get("/all-users", async (req, res) => {
   res.send(all);
 })
 
-app.get("/all-writers", auth, allTopics)
+app.get("/all-topics", auth, allTopics)
 
-app.get("/get-topic/:id", cors(corsOptions), getTopic)
+app.get("/get-topic/:id", getTopic)
 
 app.get("/all-images", auth, allImages)
 
 app.get('/register', register);
+
 app.get('/login', login);
+
 app.post("/add-topic", upload.any(), auth, addTopic)
+
 app.post("/add-image", upload.any(), auth, addImage)
 
 app.post('/register-user', registerUser);
+
 app.post("/login-check", loginUser);
 
 
@@ -116,6 +123,7 @@ app.get("/view-image/:id/:name", upload.any(), getImages)
 app.post("/add-topic", upload.any())
 
 app.put("/edit-topic/:id", updateTopic)
+app.get("/get-image/:id", getALLImages)
 
 app.get("/delete-topic/:id", deleteTopicAndImages)
 
@@ -124,6 +132,7 @@ app.post("/search", searchTopics)
 
 app.post("/search-images", searchImages)
 
+// Port
 const port = 2500;
 app.listen(port, () => {
   console.log("Server running on port " + port);
