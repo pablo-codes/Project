@@ -56,11 +56,11 @@ Backend:
 
 **Francis Okpani**
 
-- [Profile](https://github.com/sebprestele "Sebastian Prestele")
+- [Profile]((https://github.com/pablo-codes) "Okpani Francis")
 
 - [Email](mailto:francisokpani570@gmail.com?subject=Hi%20from%20<repo-email> "Hi!")
 
-- [LinkedIn](https://www.linkedin.com/in/sebastianprestele/ "LinkedIn Sebastian Prestele")
+- [LinkedIn]( https://www.linkedin.com/in/francis-okpani-0974a324b/ Francis Okpani")
 
 ## Author's Note
 
