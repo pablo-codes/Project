@@ -56,7 +56,7 @@ Backend:
 
 **Francis Okpani**
 
-- [Profile]((https://github.com/pablo-codes)
+- [Profile](https://github.com/pablo-codes)
 
 - [Email](mailto:francisokpani570@gmail.com?subject=Hi%20from%20<repo-email> "Hi!")
 
