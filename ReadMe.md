@@ -22,7 +22,7 @@
     or if not user will be redirected back
     3 Password will be saved by web app
 
-//
+
 
 # How to Add Topics
 
@@ -31,7 +31,7 @@
     3 Press submit
     4 User will be redirected to allTopics
 
-//
+
 
 ## pls note that another user can't see your topics only the ADMIN has rights
 
@@ -40,7 +40,7 @@
      1 click on the pen icon in the topic you want to update
      ps: your client should be running
 
-//
+
 
 ## 👷 Built with!
 
