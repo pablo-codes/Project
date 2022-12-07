@@ -11,7 +11,7 @@
 - Effective Data Management
 - Simple to use
 
- make sure you create a user before you enter the client
+make sure you create a user before you enter the client
 
 ## if no user you will be redirected to register
 
@@ -22,16 +22,12 @@
     or if not user will be redirected back
     3 Password will be saved by web app
 
-
-
 # How to Add Topics
 
     1 Click on plus button wiith header ADD TOPIC
     2 Input the details
     3 Press submit
     4 User will be redirected to allTopics
-
-
 
 ## pls note that another user can't see your topics only the ADMIN has rights
 
@@ -40,13 +36,11 @@
      1 click on the pen icon in the topic you want to update
      ps: your client should be running
 
-
-
 ## 👷 Built with!
 
 Frontend:
 
-- React, Axios, Redux ,
+- React, Axios
 
 Backend:
 
@@ -60,7 +54,7 @@ Backend:
 
 - [Email](mailto:francisokpani570@gmail.com?subject=Hi%20from%20<repo-email> "Hi!")
 
-- [LinkedIn]( https://www.linkedin.com/in/francis-okpani)
+- [LinkedIn](https://www.linkedin.com/in/francis-okpani)
 
 ## Author's Note
 
@@ -68,6 +62,6 @@ Backend:
 - If error detected, email me
 - Admin credentials are in the .env file
 - NB: the admin must be created with the specific credentials, feel free to change them
-#� �P�r�o�j�e�c�t�
-�
-�
+  #� �P�r�o�j�e�c�t�
+  �
+  �
