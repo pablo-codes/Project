@@ -16,7 +16,7 @@ const jwt = require('jsonwebtoken')
 const cookie = require('cookie-parser')
 const dotenv = require('dotenv')
 const multer = require('multer')
-const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage } = require('./controllers/Usercontroller')
+const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage } = require('./controllers/Usercontroller')
 const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages } = require('./controllers/Admincontroller')
 const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
 
@@ -127,6 +127,7 @@ app.put("/edit-image/:id", updateImage)
 app.get("/get-image/:id", getALLImages)
 
 app.get("/delete-topic/:id", deleteTopicAndImages)
+app.get("/delete-image/:id", deleteImage)
 
 
 app.post("/search", searchTopics)

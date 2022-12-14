@@ -1,12 +1,15 @@
 import React from 'react'
+import { BiCalendarAlt, BiComment, BiHeart, BiUser } from 'react-icons/bi'
+import { BsCalendar } from 'react-icons/bs'
 
 const SectionA = (props) => {
-
+  {/* eslint-disable jsx-a11y/anchor-is-valid */ }
   // const picget = require(`../../../images/${pic}`)
   //   console.log(pic)
   function change() {
     let pics = props.image[0]
-    const pic = require(`../../../images/dynamic/${pics}`)
+    console.log(pics)
+    const pic = require(`../../../images/dynamic/${props.image[0]}`)
     document.getElementById('images').style.backgroundImage = `url(${pic})`
   }
   const getDate = new Date(props.date).toLocaleString()
@@ -25,10 +28,10 @@ const SectionA = (props) => {
               {/* <!-- /.post-category --> */}
               <h1 className="display-1 mb-4 text-white">{props.title}</h1>
               <ul className="post-meta text-white">
-                <li className="post-date"><i className="uil uil-calendar-alt"></i><span>{getDate}</span></li>
-                <li className="post-author"><i className="uil uil-user"></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset"><span>By {props.author} </span></a></li>
-                <li className="post-comments"><i className="uil uil-comment"></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Comments</span></a></li>
-                <li className="post-likes"><i className="uil uil-heart-alt"></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Likes</span></a></li>
+                <li className="post-date"><i className="uil "><BiCalendarAlt /></i><span>{getDate}</span></li>
+                <li className="post-author"><i className="uil"><BiUser /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset"><span>By {props.author} </span></a></li>
+                <li className="post-comments"><i className="uil"><BiComment /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Comments</span></a></li>
+                <li className="post-likes"><i className="uil"><BiHeart /></i><a href="https://sandbox.elemisthemes.com/blog-post2.html#" className="text-reset">3<span> Likes</span></a></li>
               </ul>
               {/* <!-- /.post-meta --> */}
             </div>

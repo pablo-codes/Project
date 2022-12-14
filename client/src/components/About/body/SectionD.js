@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsDribbble, BsFacebook, BsTwitter } from 'react-icons/bs'
 
 const SectionD = () => {
   return (
@@ -13,23 +14,23 @@ const SectionD = () => {
         </div>
         {/* <!--/.row --> */}
         <div className="position-relative">
-          <div className="shape rounded-circle bg-soft-yellow rellax w-16 h-16" data-rellax-speed="1" style={{bottom: "0.5rem", right: "-1.7rem", transform: "translate3d(0px, 40px, 0px)"}}></div>
-          <div className="shape rounded-circle bg-line red rellax w-16 h-16" data-rellax-speed="1" style={{top: "0.5rem", left: "-1.7rem", transform: "translate3d(0px, 8px, 0px)"}}></div>
+          <div className="shape rounded-circle bg-soft-yellow rellax w-16 h-16" data-rellax-speed="1" style={{ bottom: "0.5rem", right: "-1.7rem", transform: "translate3d(0px, 40px, 0px)" }}></div>
+          <div className="shape rounded-circle bg-line red rellax w-16 h-16" data-rellax-speed="1" style={{ top: "0.5rem", left: "-1.7rem", transform: "translate3d(0px, 8px, 0px)" }}></div>
           <div className="swiper-container dots-closer mb-6 swiper-container-1" data-margin="0" data-dots="true" data-items-xxl="4" data-items-xl="3" data-items-lg="3" data-items-md="2" data-items-xs="1">
             <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-              <div className="swiper-wrapper" id="swiper-wrapper-7b9e5479ce33e671" aria-live="off" style={{cursor: "grab", transform: "translate3d(0px, 0px, 0px)"}}>
-                <div className="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style={{width: "322.5px"}}>
+              <div className="swiper-wrapper" id="swiper-wrapper-7b9e5479ce33e671" aria-live="off" style={{ cursor: "grab", transform: "translate3d(0px, 0px, 0px)" }}>
+                <div className="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te1.jpg")} srcSet="./assets/img/avatars/te1@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te1.jpg")} srcSet="./assets/img/avatars/te1@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Coriss Ambady</h4>
                         <div className="meta mb-2">Financial Analyst</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -40,18 +41,18 @@ const SectionD = () => {
                   {/* <!-- /.item-inner --> */}
                 </div>
                 {/* <!--/.swiper-slide --> */}
-                <div className="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6" style={{width: "322.5px"}}>
+                <div className="swiper-slide swiper-slide-next" role="group" aria-label="2 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te2.jpg")} srcSet="./assets/img/avatars/te2@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te2.jpg")} srcSet="./assets/img/avatars/te2@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Cory Zamora</h4>
                         <div className="meta mb-2">Marketing Specialist</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -62,18 +63,18 @@ const SectionD = () => {
                   {/* <!-- /.item-inner --> */}
                 </div>
                 {/* <!--/.swiper-slide --> */}
-                <div className="swiper-slide" role="group" aria-label="3 / 6" style={{width: "322.5px"}}>
+                <div className="swiper-slide" role="group" aria-label="3 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te3.jpg")} srcSet="./assets/img/avatars/te3@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te3.jpg")} srcSet="./assets/img/avatars/te3@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Nikolas Brooten</h4>
                         <div className="meta mb-2">Sales Manager</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -84,18 +85,18 @@ const SectionD = () => {
                   {/* <!-- /.item-inner --> */}
                 </div>
                 {/* <!--/.swiper-slide --> */}
-                <div className="swiper-slide" role="group" aria-label="4 / 6" style={{width: "322.5px"}}>
+                <div className="swiper-slide" role="group" aria-label="4 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te4.jpg")} srcSet="./assets/img/avatars/te4@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te4.jpg")} srcSet="./assets/img/avatars/te4@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Jackie Sanders</h4>
                         <div className="meta mb-2">Investment Planner</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -106,18 +107,18 @@ const SectionD = () => {
                   {/* <!-- /.item-inner --> */}
                 </div>
                 {/* <!--/.swiper-slide --> */}
-                <div className="swiper-slide" role="group" aria-label="5 / 6" style={{width: "322.5px"}}>
+                <div className="swiper-slide" role="group" aria-label="5 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te5.jpg")} srcSet="./assets/img/avatars/te5@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te5.jpg")} srcSet="./assets/img/avatars/te5@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Laura Widerski</h4>
                         <div className="meta mb-2">Sales Specialist</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -128,18 +129,18 @@ const SectionD = () => {
                   {/* <!-- /.item-inner --> */}
                 </div>
                 {/* <!--/.swiper-slide --> */}
-                <div className="swiper-slide" role="group" aria-label="6 / 6" style={{width: "322.5px"}}>
+                <div className="swiper-slide" role="group" aria-label="6 / 6" style={{ width: "322.5px" }}>
                   <div className="item-inner">
                     <div className="card">
                       <div className="card-body">
-                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te6.jpg")} srcSet="./assets/img/avatars/te6@2x.jpg 2x" alt=''/>
+                        <img className="rounded-circle w-15 mb-4" src={require("../../../images/static/te6.jpg")} srcSet="./assets/img/avatars/te6@2x.jpg 2x" alt='' />
                         <h4 className="mb-1">Tina Geller</h4>
                         <div className="meta mb-2">Financial Analyst</div>
                         <p className="mb-2">Fermentum massa justo sit amet risus morbi leo.</p>
                         <nav className="nav social mb-0">
-                          <a href="/about"><i className="uil uil-twitter"></i></a>
-                          <a href="/about"><i className="uil uil-facebook-f"></i></a>
-                          <a href="/about"><i className="uil uil-dribbble"></i></a>
+                          <a href="http://twitter.com"><i className="uil "><BsTwitter /></i></a>
+                          <a href="http://facebook.com"><i className="uil "><BsFacebook /></i></a>
+                          <a href="http://dribble.com"><i className="uil"><BsDribbble /></i></a>
                         </nav>
                         {/* <!-- /.social --> */}
                       </div>
@@ -152,9 +153,9 @@ const SectionD = () => {
                 {/* <!--/.swiper-slide --> */}
               </div>
               {/* <!--/.swiper-wrapper --> */}
-            <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
             {/* <!-- /.swiper --> */}
-          <div className="swiper-controls"><div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span className="swiper-pagination-bullet swiper-pagination-bullet-active" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 2"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 3"></span></div></div></div>
+            <div className="swiper-controls"><div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span className="swiper-pagination-bullet swiper-pagination-bullet-active" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 2"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 3"></span></div></div></div>
           {/* <!-- /.swiper-container --> */}
         </div>
         {/* <!-- /.position-relative --> */}

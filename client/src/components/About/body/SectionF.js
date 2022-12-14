@@ -1,4 +1,6 @@
 import React from 'react'
+import { BiEnvelope, BiLocationPlus, BiPhone } from 'react-icons/bi'
+
 
 const SectionF = () => {
   return (
@@ -6,8 +8,8 @@ const SectionF = () => {
       <div className="container pt-18 pb-14 pt-md-19 pb-md-16">
         <div className="row gx-md-8 gx-xl-12 gy-10 align-items-center">
           <div className="col-md-8 col-lg-6 offset-lg-0 col-xl-5 offset-xl-1 position-relative">
-            <div className="shape bg-dot primary rellax w-17 h-21" data-rellax-speed="1" style={{top: "-2rem", left: "-1.4rem", transform: "translate3d(0px, 132px, 0px)"}}></div>
-            <figure className="rounded"><img src={require("../../../images/static/about4.jpg")} srcSet="./assets/img/photos/about4@2x.jpg 2x" alt=""/></figure>
+            <div className="shape bg-dot primary rellax w-17 h-21" data-rellax-speed="1" style={{ top: "-2rem", left: "-1.4rem", transform: "translate3d(0px, 132px, 0px)" }}></div>
+            <figure className="rounded"><img src={require("../../../images/static/about4.jpg")} alt="" /></figure>
           </div>
           {/* <!--/column --> */}
           <div className="col-lg-6">
@@ -15,16 +17,16 @@ const SectionF = () => {
             <h2 className="display-4 mb-8">Convinced yet? Let's make something great together.</h2>
             <div className="d-flex flex-row">
               <div>
-                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil uil-location-pin-alt"></i> </div>
+                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil"><BiLocationPlus color='black' /></i> </div>
               </div>
               <div>
                 <h5 className="mb-1">Address</h5>
-                <address>Moonshine St. 14/05 Light City, <br/> className="d-none d-md-block"<br/>London, United Kingdom</address>
+                <address>Moonshine St. 14/05 Light City,<br />London, United Kingdom</address>
               </div>
             </div>
             <div className="d-flex flex-row">
               <div>
-                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil uil-phone-volume"></i> </div>
+                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil"><BiPhone color='black' /></i> </div>
               </div>
               <div>
                 <h5 className="mb-1">Phone</h5>
@@ -33,7 +35,7 @@ const SectionF = () => {
             </div>
             <div className="d-flex flex-row">
               <div>
-                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil uil-envelope"></i> </div>
+                <div className="icon text-primary fs-28 me-6 mt-n1"> <i className="uil"><BiEnvelope color='black' /></i> </div>
               </div>
               <div>
                 <h5 className="mb-1">E-mail</h5>

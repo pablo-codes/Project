@@ -40,7 +40,7 @@ const allTopics = async (req, res, next) => {
 
         res.render("all-topics", { all });
     } catch (error) {
-
+        console.log(error)
         res.redirect("/")
     }
 }
@@ -123,15 +123,17 @@ const addTopic = async (req, res, next) => {
         const all = await product.create({
             title: body.title,
             author: get.username,
-            role: body.role,
             description: body.description,
             features: body.features,
         })
 
         if (req.files) {
             const promises = req.files.map(async (file) => {
-                const check = await gridFile.findOne({ filename: file.originalname })
+                const names = file.originalname
+                const newname = names.replace(/\s+/g, "")
+                const check = await gridFile.findOne({ $and: [{ aliases: id }, { filename: newname }] })
                 if (check) {
+
                     const gridid = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfileid: check.id } }, { upsert: true })
                     const gridname = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfilename: check.filename } }, { upsert: true })
                     console.log(`The image ${check.filename} already exists`)
@@ -141,7 +143,7 @@ const addTopic = async (req, res, next) => {
 
 
                     // upload file to gridfs
-                    const GridFile = new gridFile({ filename: file.originalname, aliases: req.cookies.user })
+                    const GridFile = new gridFile({ filename: newname, aliases: req.cookies.user })
                     const uploaded = await GridFile.upload(fileStream)
                     fs.unlinkSync(file.path)
 
@@ -164,10 +166,15 @@ const addTopic = async (req, res, next) => {
 
 // Add's an image
 const addImage = async (req, res) => {
+    const id = req.cookies.user
     if (req.files) {
         const promises = req.files.map(async (file) => {
-            const check = await gridFile.findOne({ filename: file.originalname })
+            const names = file.originalname
+            const newname = names.replace(/\s+/g, "")
+            console.log(newname)
+            const check = await gridFile.findOne({ $and: [{ aliases: id }, { filename: newname }] })
             if (check) {
+
 
                 console.log(`The image ${check.filename} already exists`)
             }
@@ -176,7 +183,7 @@ const addImage = async (req, res) => {
 
 
                 // upload file to gridfs
-                const GridFile = new gridFile({ filename: file.originalname, aliases: req.cookies.user })
+                const GridFile = new gridFile({ filename: newname, aliases: id })
                 const uploaded = await GridFile.upload(fileStream)
                 fs.unlinkSync(file.path)
 
@@ -197,7 +204,7 @@ const getImages = async (req, res) => {
 
     const newid = id.split(":", 2)
     const newname = name.split(":", 2)
-    const edit = await gridFile.findOne({ id: newid[1] })
+    const edit = await gridFile.findOne({ _id: newid[1] })
     const GridFile = await gridFile.findById(edit.id)
     res.attachment(newname[1])
     await GridFile.downloadStream(res)
@@ -256,24 +263,84 @@ const updateImage = async (req, res) => {
 
 }
 
+const deleteImage = async (req, res) => {
+    try {
+        const id = req.cookies.user
+        const find = req.params.id
+
+
+
+
+        const newfind = find.split(":", 2)
+        const check = await product.find({ gridfileid: newfind[1] })
+        if (check.length > 1) {
+            const iname = await gridFile.findOne({ _id: newfind[1] })
+            const mapf = await check.map((el) => {
+                return el.title
+            })
+            console.log(`${iname.filename} is being used at ${mapf}`)
+            res.redirect('/all-images')
+        } else {
+
+            await gridFile.findByIdAndDelete(newfind[1])
+            res.redirect('/all-images')
+        }
+    } catch (error) {
+        console.log(error)
+        res.redirect('/all-images')
+    }
+}
+
 // Delete's topic and all related images
-const deleteTopicAndImages = async (req, res, nxt) => {
+const deleteTopicAndImages = async (req, res) => {
 
     try {
         const find = req.params.id
+        const give = req.cookies.user
+        const newfind = find.split(":", 2)
+        const searching = await user.findOne({ _id: give })
 
-        const newfind = find.split(":")
 
         const found = await product.findOne({ _id: newfind[1] })
 
+        const check1 = await product.find({ gridfileid: found.gridfileid[0] })
+        const check2 = await product.find({ gridfileid: found.gridfileid[1] })
+
+
+
 
         if (found) {
-            await found.gridfileid.map((el) => {
-                gridFile.findByIdAndDelete(el)
-            })
+            if (check1.length > 1 || check2.length > 1) {
+                const iname1 = await gridFile.findOne({ _id: found.gridfileid[0] })
+                const iname2 = await gridFile.findOne({ _id: found.gridfileid[1] })
 
-            const del = await product.findOneAndDelete({ _id: found })
-            res.redirect('/all-topics')
+                const mapf1 = await check1.map((el) => {
+                    return el.title
+                })
+                const mapf2 = await check2.map((el) => {
+                    return el.title
+                })
+                if (mapf1) {
+                    console.log(`${iname1.filename} is being used at ${mapf1}`)
+                } else {
+                    console.log(`${iname2.filename} is being used at ${mapf2}`)
+                }
+
+
+            } else {
+                await found.gridfileid.map((el) => {
+                    gridFile.findByIdAndDelete(el)
+                })
+            }
+
+            const del = await product.findOneAndDelete({ _id: newfind[1] })
+
+            if (searching.role == "admin") {
+                res.redirect('/admin-topics')
+            }
+            else {
+                res.redirect('/all-topics')
+            }
         }
     } catch (err) {
 
@@ -310,4 +377,4 @@ const searchImages = async (req, res) => {
     }
     res.render("searchpage-images", { searching })
 }
-module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, searchImages, searchTopics }
+module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, deleteImage, searchImages, searchTopics }

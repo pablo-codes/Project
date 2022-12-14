@@ -64,7 +64,7 @@ const registerUser = async (req, res) => {
           { user_id: user._id, email: body.email },
           process.env.ADMIN_KEY,
           {
-            expiresIn: 36e5,
+            expiresIn:"5h"
           }
         );
 
@@ -72,8 +72,8 @@ const registerUser = async (req, res) => {
         const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
         const Get = await user.findOne({ email: req.body.email })
 
-        res.cookie("user", Get._id, { maxAge: 36e5 })
-        res.cookie('admin_key', token)
+        res.cookie("user", Get._id, { maxAge: 36e5*5 })
+        res.cookie('admin_key', token,{ maxAge: 36e5*5 })
 
         res.redirect("/admin")
       }
@@ -98,7 +98,7 @@ const registerUser = async (req, res) => {
           { user_id: user._id, email: body.email },
           process.env.TOKEN_KEY,
           {
-            expiresIn: 36e5,
+            expiresIn:"5h"
           }
         );
 
@@ -106,7 +106,7 @@ const registerUser = async (req, res) => {
         const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
         const Get = await user.findOne({ email: req.body.email })
 
-        res.cookie("user", Get._id, { maxAge: 36e5 })
+        res.cookie("user", Get._id, { maxAge: 36e5*5 }),{ maxAge: 36e5*5 }
 
         res.cookie('token_key', token)
 
@@ -140,15 +140,15 @@ const loginUser = async (req, res, next) => {
             { users_id: users._id, email: req.body.email },
             process.env.ADMIN_KEY,
             {
-              expiresIn: 36e5,
+              expiresIn:"5h"
             }
           );
 
           const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
           const Get = await user.findOne({ email: req.body.email })
 
-          res.cookie("user", Get._id, { maxAge: 36e5 })
-          res.cookie("admin_key", token)
+          res.cookie("user", Get._id, { maxAge: 36e5*5 })
+          res.cookie("admin_key", token,{ maxAge: 36e5*5 })
 
           res.redirect('/admin');
         }
@@ -168,7 +168,7 @@ const loginUser = async (req, res, next) => {
             { users_id: users._id, email: req.body.email },
             process.env.TOKEN_KEY,
             {
-              expiresIn: 36e5,
+              expiresIn:"5h"
             }
           );
 
@@ -176,8 +176,8 @@ const loginUser = async (req, res, next) => {
           const tokenname = await user.findOneAndUpdate({ email: req.body.email }, { token: token })
           const Get = await user.findOne({ email: req.body.email })
 
-          res.cookie("user", Get._id, { maxAge: 36e5 })
-          res.cookie("token_key", token)
+          res.cookie("user", Get._id, { maxAge: 36e5*5 })
+          res.cookie("token_key", token,{ maxAge: 36e5*5 })
 
           res.redirect('/');
 

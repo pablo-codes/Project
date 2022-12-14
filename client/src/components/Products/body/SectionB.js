@@ -1,15 +1,18 @@
+
 import React, { useState } from 'react'
+import { BiSearchAlt } from 'react-icons/bi'
 
 const SectionB = (props) => {
-  const [picture,setPicture ] =useState("")
-  
-  
-  function change (){
-    
-    setPicture( require(`../../../images/dynamic/${props.image[1]}`))
-    
+  {/* eslint-disable jsx-a11y/anchor-is-valid */ }
+  const [picture, setPicture] = useState("")
+
+
+  function change() {
+
+    setPicture(require(`../../../images/dynamic/${props.image[1]}`))
+
   }
-  
+
   return (
     <section className="wrapper bg-light" onMouseEnter={change}  >
       <div className="container py-14 py-md-16">
@@ -17,7 +20,7 @@ const SectionB = (props) => {
           <div className="col-lg-8">
             <div className="blog single">
               <div className="card">
-                <figure className="card-img-top"><img id='images' src={picture} alt=""/></figure>
+                <figure className="card-img-top"><img id='images' src={picture} alt="" /></figure>
                 <div className="card-body">
                   <div className="classic-view">
                     <article className="post">
@@ -26,19 +29,19 @@ const SectionB = (props) => {
                         <p>{props.description}</p>
                         <div className="row g-6 mt-3 mb-10">
                           <div className="col-md-6">
-                            <figure className="hover-scale rounded cursor-dark"><a href="https://sandbox.elemisthemes.com/assets/img/photos/b8-full.jpg" data-glightbox="title: Heading; description: Purus Vulputate Sem Tellus Quam" data-gallery="post"> <img  src={require("../../../images/static/b8.jpg")} alt=""/></a></figure>
+                            <figure className="hover-scale rounded cursor-dark"><a href={require("../../../images/static/b8.jpg")} data-glightbox="title: Heading; description: Purus Vulputate Sem Tellus Quam" data-gallery="post"> <img src={require("../../../images/static/b8.jpg")} alt="" /></a></figure>
                           </div>
                           {/* <!--/column --> */}
                           <div className="col-md-6">
-                            <figure className="hover-scale rounded cursor-dark"><a href="https://sandbox.elemisthemes.com/assets/img/photos/b9-full.jpg" data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b9.jpg")} alt=""/></a></figure>
+                            <figure className="hover-scale rounded cursor-dark"><a href={require("../../../images/static/b9.jpg")} data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b9.jpg")} alt="" /></a></figure>
                           </div>
                           {/* <!--/column --> */}
                           <div className="col-md-6">
-                            <figure className="hover-scale rounded cursor-dark"><a href="https://sandbox.elemisthemes.com/assets/img/photos/b10-full.jpg" data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b10.jpg")} alt=""/></a></figure>
+                            <figure className="hover-scale rounded cursor-dark"><a href={require("../../../images/static/b10.jpg")} data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b10.jpg")} alt="" /></a></figure>
                           </div>
                           {/* <!--/column --> */}
                           <div className="col-md-6">
-                            <figure className="hover-scale rounded cursor-dark"><a href="https://sandbox.elemisthemes.com/assets/img/photos/b11-full.jpg" data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b11.jpg")} alt=""/></a></figure>
+                            <figure className="hover-scale rounded cursor-dark"><a href={require("../../../images/static/b11.jpg")} data-glightbox="" data-gallery="post"> <img src={require("../../../images/static/b11.jpg")} alt="" /></a></figure>
                           </div>
                           {/* <!--/column --> */}
                         </div>
@@ -80,10 +83,10 @@ const SectionB = (props) => {
                     {/* <!-- /.post --> */}
                   </div>
                   {/* <!-- /.classic-view --> */}
-                  <hr/>
+                  <hr />
                   <div className="author-info d-md-flex align-items-center mb-3">
                     <div className="d-flex align-items-center">
-                      <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u5.jpg")} alt=""/></figure>
+                      <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u5.jpg")} alt="" /></figure>
                       <div>
                         <h6><a href="#" className="link-dark">Nikolas Brooten</a></h6>
                         <span className="post-meta fs-15">Sales Manager</span>
@@ -103,14 +106,14 @@ const SectionB = (props) => {
                     <a href="#"><i className="uil uil-youtube"></i></a>
                   </nav>
                   {/* <!-- /.social --> */}
-                  <hr/>
+                  <hr />
                   <h3 className="mb-6">You Might Also Like</h3>
                   <div className="swiper-container blog grid-view mb-16 swiper-container-0" data-margin="30" data-dots="true" data-items-md="2" data-items-xs="1">
                     <div className="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                      <div className="swiper-wrapper" id="swiper-wrapper-46cb5266cb17a4f3" aria-live="off" style={{cursor: "grab", transform: "translate3d(0px, 0px, 0px)"}}>
-                        <div className="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style={{width: "343.5px", marginright: "30px"}}>
+                      <div className="swiper-wrapper" id="swiper-wrapper-46cb5266cb17a4f3" aria-live="off" style={{ cursor: "grab", transform: "translate3d(0px, 0px, 0px)" }}>
+                        <div className="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style={{ width: "343.5px", marginright: "30px" }}>
                           <article>
-                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b4.jpg")} alt=""/><span className="bg"></span></a>
+                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b4.jpg")} alt="" /><span className="bg"></span></a>
                               <figcaption>
                                 <h5 className="from-top mb-0">Read More</h5>
                               </figcaption>
@@ -135,9 +138,9 @@ const SectionB = (props) => {
                           {/* <!-- /article --> */}
                         </div>
                         {/* <!--/.swiper-slide --> */}
-                        <div className="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style={{width: "343.5px", marginRight: "30px"}}>
+                        <div className="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style={{ width: "343.5px", marginRight: "30px" }}>
                           <article>
-                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b5.jpg")} alt=""/><span className="bg"></span></a>
+                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b5.jpg")} alt="" /><span className="bg"></span></a>
                               <figcaption>
                                 <h5 className="from-top mb-0">Read More</h5>
                               </figcaption>
@@ -162,9 +165,9 @@ const SectionB = (props) => {
                           {/* <!-- /article --> */}
                         </div>
                         {/* <!--/.swiper-slide --> */}
-                        <div className="swiper-slide" role="group" aria-label="3 / 4" style={{width: "343.5px", marginRight: "30px"}}>
+                        <div className="swiper-slide" role="group" aria-label="3 / 4" style={{ width: "343.5px", marginRight: "30px" }}>
                           <article>
-                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b6.jpg")} alt=""/><span className="bg"></span></a>
+                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b6.jpg")} alt="" /><span className="bg"></span></a>
                               <figcaption>
                                 <h5 className="from-top mb-0">Read More</h5>
                               </figcaption>
@@ -189,9 +192,9 @@ const SectionB = (props) => {
                           {/* <!-- /article --> */}
                         </div>
                         {/* <!--/.swiper-slide --> */}
-                        <div className="swiper-slide" role="group" aria-label="4 / 4" style={{width: "343.5px", marginRight: "30px"}}>
+                        <div className="swiper-slide" role="group" aria-label="4 / 4" style={{ width: "343.5px", marginRight: "30px" }}>
                           <article>
-                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b7.jpg")} alt=""/><span className="bg"></span></a>
+                            <figure className="overlay overlay-1 hover-scale rounded mb-5"><a href="#"> <img src={require("../../../images/static/b7.jpg")} alt="" /><span className="bg"></span></a>
                               <figcaption>
                                 <h5 className="from-top mb-0">Read More</h5>
                               </figcaption>
@@ -217,18 +220,18 @@ const SectionB = (props) => {
                         {/* <!--/.swiper-slide --> */}
                       </div>
                       {/* <!--/.swiper-wrapper --> */}
-                    <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                      <span className="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                     {/* <!-- /.swiper --> */}
-                  <div className="swiper-controls"><div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span className="swiper-pagination-bullet swiper-pagination-bullet-active" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 2"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 3"></span></div></div></div>
+                    <div className="swiper-controls"><div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span className="swiper-pagination-bullet swiper-pagination-bullet-active" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 2"></span><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 3"></span></div></div></div>
                   {/* <!-- /.swiper-container --> */}
-                  <hr/>
+                  <hr />
                   <div id="comments">
                     <h3 className="mb-6">5 Comments</h3>
                     <ol id="singlecomments" className="commentlist">
                       <li className="comment">
                         <div className="comment-header d-md-flex align-items-center">
                           <div className="d-flex align-items-center">
-                            <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u1.jpg")} alt=""/></figure>
+                            <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u1.jpg")} alt="" /></figure>
                             <div>
                               <h6 className="comment-author"><a href="#" className="link-dark">Connor Gibson</a></h6>
                               <ul className="post-meta">
@@ -250,7 +253,7 @@ const SectionB = (props) => {
                       <li className="comment">
                         <div className="comment-header d-md-flex align-items-center">
                           <div className="d-flex align-items-center">
-                            <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u2.jpg")} alt=""/></figure>
+                            <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u2.jpg")} alt="" /></figure>
                             <div>
                               <h6 className="comment-author"><a href="#" className="link-dark">Nikolas Brooten</a></h6>
                               <ul className="post-meta">
@@ -272,7 +275,7 @@ const SectionB = (props) => {
                           <li className="comment">
                             <div className="comment-header d-md-flex align-items-center">
                               <div className="d-flex align-items-center">
-                                <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u3.jpg")} alt=""/></figure>
+                                <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u3.jpg")} alt="" /></figure>
                                 <div>
                                   <h6 className="comment-author"><a href="#" className="link-dark">Pearce Frye</a></h6>
                                   <ul className="post-meta">
@@ -294,7 +297,7 @@ const SectionB = (props) => {
                               <li className="comment">
                                 <div className="comment-header d-md-flex align-items-center">
                                   <div className="d-flex align-items-center">
-                                    <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u2.jpg")}alt=""/></figure>
+                                    <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u2.jpg")} alt="" /></figure>
                                     <div>
                                       <h6 className="comment-author"><a href="#" className="link-dark">Nikolas Brooten</a></h6>
                                       <ul className="post-meta">
@@ -320,7 +323,7 @@ const SectionB = (props) => {
                       <li className="comment">
                         <div className="comment-header d-md-flex align-items-center">
                           <div className="d-flex align-items-center">
-                            <figure className="user-avatar"><img className="rounded-circle"  src={require("../../../images/static/u4.jpg")}alt=""/></figure>
+                            <figure className="user-avatar"><img className="rounded-circle" src={require("../../../images/static/u4.jpg")} alt="" /></figure>
                             <div>
                               <h6 className="comment-author"><a href="#" className="link-dark">Lou Bloxham</a></h6>
                               <ul className="post-meta">
@@ -342,24 +345,24 @@ const SectionB = (props) => {
                     </ol>
                   </div>
                   {/* <!-- /#comments --> */}
-                  <hr/>
+                  <hr />
                   <h3 className="mb-3">Would you like to share your thoughts?</h3>
                   <p className="mb-7">Your email address will not be published. Required fields are marked *</p>
                   <form className="comment-form">
                     <div className="form-floating mb-4">
-                      <input type="text" className="form-control" placeholder="Name*" id="c-name"/>
+                      <input type="text" className="form-control" placeholder="Name*" id="c-name" />
                       <label htmlFor="c-name">Name *</label>
                     </div>
                     <div className="form-floating mb-4">
-                      <input type="email" className="form-control" placeholder="Email*" id="c-email"/>
+                      <input type="email" className="form-control" placeholder="Email*" id="c-email" />
                       <label htmlFor="c-email">Email*</label>
                     </div>
                     <div className="form-floating mb-4">
-                      <input type="text" className="form-control" placeholder="Website" id="c-web"/>
+                      <input type="text" className="form-control" placeholder="Website" id="c-web" />
                       <label htmlFor="c-web">Website</label>
                     </div>
                     <div className="form-floating mb-4">
-                      <textarea name="textarea" className="form-control" placeholder="Comment" style={{height: "200px"}}></textarea>
+                      <textarea name="textarea" className="form-control" placeholder="Comment" style={{ height: "200px" }}></textarea>
                       <label>un fuctional*</label>
                     </div>
                     <button type="submit" className="btn btn-primary rounded-pill mb-0">Submit</button>
@@ -375,10 +378,11 @@ const SectionB = (props) => {
           {/* <!-- /column --> */}
           <aside className="col-lg-4 sidebar mt-11 mt-lg-6">
             <div className="widget">
-              <form className="search-form">
+              <form className="search">
+
                 <div className="form-floating mb-0">
-                  <input id="search-form" type="text" className="form-control" placeholder="Search"/>
-                  <label htmlFor="search-form">Search</label>
+                  <input id="search-form" type="text" className="form-control" placeholder="Search" />
+                  <label htmlFor="search-form">Search <BiSearchAlt /></label>
                 </div>
               </form>
               {/* <!-- /.search-form --> */}
@@ -401,7 +405,7 @@ const SectionB = (props) => {
               <h4 className="widget-title mb-3">Popular Posts</h4>
               <ul className="image-list">
                 <li>
-                  <figure className="rounded"><a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a1.jpg")} alt=""/></a></figure>
+                  <figure className="rounded"><a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a1.jpg")} alt="" /></a></figure>
                   <div className="post-content">
                     <h6 className="mb-2"> <a className="link-dark" href="https://sandbox.elemisthemes.com/blog-post.html">Magna Mollis Ultricies</a> </h6>
                     <ul className="post-meta">
@@ -412,7 +416,7 @@ const SectionB = (props) => {
                   </div>
                 </li>
                 <li>
-                  <figure className="rounded"> <a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a2.jpg")} alt=""/></a></figure>
+                  <figure className="rounded"> <a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a2.jpg")} alt="" /></a></figure>
                   <div className="post-content">
                     <h6 className="mb-2"> <a className="link-dark" href="https://sandbox.elemisthemes.com/blog-post.html">Ornare Nullam Risus</a> </h6>
                     <ul className="post-meta">
@@ -423,7 +427,7 @@ const SectionB = (props) => {
                   </div>
                 </li>
                 <li>
-                  <figure className="rounded"><a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a3.jpg")} alt=""/></a></figure>
+                  <figure className="rounded"><a href="https://sandbox.elemisthemes.com/blog-post.html"><img src={require("../../../images/static/a3.jpg")} alt="" /></a></figure>
                   <div className="post-content">
                     <h6 className="mb-2"> <a className="link-dark" href="https://sandbox.elemisthemes.com/blog-post.html">Euismod Nullam Fusce</a> </h6>
                     <ul className="post-meta">

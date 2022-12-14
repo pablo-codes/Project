@@ -1,19 +1,20 @@
 import React from 'react'
+import { BsCheck } from 'react-icons/bs'
 
 const SectionB = () => {
   return (
     <section className="wrapper bg-light angled upper-end lower-end">
-      
+
       <div className="container py-14 py-md-16">
         <div className="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
           <div className="col-lg-6 position-relative order-lg-2">
-            <div className="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style={{top: "3rem", left: "5.5rem", transform: "translate3d(0px, -250px, 0px)"}}></div>
+            <div className="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style={{ top: "3rem", left: "5.5rem", transform: "translate3d(0px, -250px, 0px)" }}></div>
             <div className="overlap-grid overlap-grid-2">
               <div className="item">
-                <figure className="rounded shadow"><img src={require("../../../images/static/about2.jpg")} srcSet="./assets/img/photos/about2@2x.jpg 2x" alt=""/></figure>
+                <figure className="rounded shadow"><img src={require("../../../images/static/about2.jpg")} srcSet="./assets/img/photos/about2@2x.jpg 2x" alt="" /></figure>
               </div>
               <div className="item">
-                <figure className="rounded shadow"><img src={require("../../../images/static/about3.jpg")} srcSet="./assets/img/photos/about3@2x.jpg 2x" alt=""/></figure>
+                <figure className="rounded shadow"><img src={require("../../../images/static/about3.jpg")} srcSet="./assets/img/photos/about3@2x.jpg 2x" alt="" /></figure>
               </div>
             </div>
           </div>
@@ -26,15 +27,15 @@ const SectionB = () => {
             <div className="row gy-3 gx-xl-8">
               <div className="col-xl-6">
                 <ul className="icon-list bullet-bg bullet-soft-primary mb-0">
-                  <li><span><i className="uil uil-check"></i></span><span>Aenean eu leo quam ornare curabitur blandit tempus.</span></li>
-                  <li className="mt-3"><span><i className="uil uil-check"></i></span><span>Nullam quis risus eget urna mollis ornare donec elit.</span></li>
+                  <li><span><i className="uil"><BsCheck /></i></span><span>Aenean eu leo quam ornare curabitur blandit tempus.</span></li>
+                  <li className="mt-3"><span><i className="uil"><BsCheck /></i></span><span>Nullam quis risus eget urna mollis ornare donec elit.</span></li>
                 </ul>
               </div>
               {/* <!--/column --> */}
               <div className="col-xl-6">
                 <ul className="icon-list bullet-bg bullet-soft-primary mb-0">
-                  <li><span><i className="uil uil-check"></i></span><span>Etiam porta sem malesuada magna mollis euismod.</span></li>
-                  <li className="mt-3"><span><i className="uil uil-check"></i></span><span>Fermentum massa vivamus faucibus amet euismod.</span></li>
+                  <li><span><i className="uil"><BsCheck /></i></span><span>Etiam porta sem malesuada magna mollis euismod.</span></li>
+                  <li className="mt-3"><span><i className="uil"><BsCheck /></i></span><span>Fermentum massa vivamus faucibus amet euismod.</span></li>
                 </ul>
               </div>
               {/* <!--/column --> */}
@@ -106,7 +107,7 @@ const SectionB = () => {
             <p className="lead fs-lg pe-lg-5">Find out everything you need to know and more about how we create our business process models.</p>
             <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna mollis ornare.</p>
             <p className="mb-6">Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Vestibulum id ligula porta felis.</p>
-            <a href="https://sandbox.elemisthemes.com/about.html#" className="btn btn-primary rounded-pill mb-0">Learn More</a>
+            <a href="https://sandbox.elemisthemes.com/about.html" className="btn btn-primary rounded-pill mb-0">Learn More</a>
           </div>
           {/* <!--/column --> */}
         </div>
