@@ -49,7 +49,7 @@ make sure you create a user before you enter the client
 
 Frontend:
 
-- React, Axios
+- React
 
 Backend:
 
