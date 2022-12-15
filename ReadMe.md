@@ -69,7 +69,7 @@ Backend:
 - Admin credentials are in the .env file
 - NB: the admin must be created with the specific credentials, feel free to change them (i.e Register-user)
 - Make sure you create a user before you enter the client
-- Click on the Blog system logo at the uppermost left of the page Login/Register
+- Click on the Blog system logo at the uppermost left of the page to Login/Register
 - If error check console
   #� �P�r�o�j�e�c�t�
   �
