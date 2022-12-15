@@ -40,8 +40,6 @@
 
      1 Hover on NAV products or click view button in all-Topics
 
-# Things to Take Note Off
-
 ## 👷 Built with!
 
 Frontend:
