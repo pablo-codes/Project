@@ -17,7 +17,7 @@ const cookie = require('cookie-parser')
 const dotenv = require('dotenv')
 const multer = require('multer')
 const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage } = require('./controllers/Usercontroller')
-const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages } = require('./controllers/Admincontroller')
+const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages, searchUser, searchAdmin } = require('./controllers/Admincontroller')
 const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
 
 
@@ -27,7 +27,7 @@ dotenv.config({ path: path.join(__dirname, './config.env') })
 
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/usersystemNG").then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/blogsystem").then(() => {
   console.log("DB Connected Successfully")
 }).catch((err) => {
   console.log("connection failure")
@@ -133,6 +133,9 @@ app.get("/delete-image/:id", deleteImage)
 app.post("/search", searchTopics)
 
 app.post("/search-images", searchImages)
+app.post("/search-user", searchUser)
+app.post("/search-admin", searchAdmin)
+
 
 // Port
 const port = 2500;

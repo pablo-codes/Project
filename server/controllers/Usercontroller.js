@@ -355,26 +355,41 @@ const searchTopics = async (req, res) => {
         const users = req.cookies.user
         const search = req.body.search
         const find = await user.findOne({ _id: users })
-        const searching = await product.find({ $and: [{ author: find.username }, { title: search }] })
-        res.render("searchpage", { searching })
+        if (find.role == "admin") {
+            const all = await product.find({ title: { $regex: search, $options: "i" } })
+            res.render("all-topics", { all, layout: "adminlay" });
+        }
+        else {
+            const all = await product.find({ $and: [{ author: find.username }, { title: { $regex: search, $options: "i" } }] })
+            res.render("all-topics", { all })
+        }
+
     } catch (error) {
         console.log(error)
+        res.redirect("/all-topics")
     }
 }
 
 //Searches for images
 const searchImages = async (req, res) => {
-    const users = req.cookies.user
-    const search = req.body.search
 
-    const searching = await gridFile.find({ $and: [{ aliases: users }, { filename: search }] })
     try {
         const users = req.cookies.user
+        const search = req.body.search
+        const verify = await user.findOne({ _id: users })
+        if (verify.role == "admin") {
+            const all = await gridFile.find({ filename: { $regex: search, $options: "i" } })
+            res.render("all-images", { all, layout: "adminlay" });
+        } else {
+            const all = await gridFile.find({ $and: [{ aliases: users }, { filename: { $regex: search, $options: "i" } }] })
+            res.render("all-images", { all })
+        }
+
 
 
     } catch (error) {
         console.log(error)
     }
-    res.render("searchpage-images", { searching })
+
 }
 module.exports = { index, allTopics, getTopic, allImages, addTopic, addImage, getImages, getALLImages, updateImage, updateTopic, deleteTopicAndImages, deleteImage, searchImages, searchTopics }

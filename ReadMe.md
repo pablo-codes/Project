@@ -11,15 +11,12 @@
 - Effective Data Management
 - Simple to use
 
-make sure you create a user before you enter the client
-
-## if no user you will be redirected to register
+## Pls read the author notes
 
 # How to create user
 
     1 Ensure email is unique
-    2 Ensure username is unique
-    or if not user will be redirected back
+    2 Ensure username is unique or if not user will be redirected back
     3 Password will be saved by web app
 
 # How to Add Topics
@@ -28,8 +25,6 @@ make sure you create a user before you enter the client
     2 Input the details
     3 Press submit
     4 User will be redirected to allTopics
-
-## pls note that another user can't see your topics only the ADMIN has rights
 
 # How to Update Topics
 
@@ -44,6 +39,8 @@ make sure you create a user before you enter the client
 # How to View Topics
 
      1 Hover on NAV products or click view button in all-Topics
+
+# Things to Take Note Off
 
 ## 👷 Built with!
 
@@ -69,8 +66,13 @@ Backend:
 
 - The basis of the code is the server the client is just showing how the data can be rendered
 - If error detected, email me
+- Pls note that another user can't see your topics only the ADMIN has rights
+- If no user you will be redirected to register
 - Admin credentials are in the .env file
-- NB: the admin must be created with the specific credentials, feel free to change them
+- NB: the admin must be created with the specific credentials, feel free to change them (i.e Register-user)
+- Make sure you create a user before you enter the client
+- Click on the Blog system logo at the uppermost left of the page Login/Register
+- If error check console
   #� �P�r�o�j�e�c�t�
   �
   �

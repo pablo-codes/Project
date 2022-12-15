@@ -17,6 +17,7 @@ const admin = async (req, res) => {
     res.render('admin', { alltotal, admintotal, userstotal, sec, username, layout: "adminlay" })
   } catch (error) {
     console.log(error)
+    res.redirect("/login")
   }
 
 }
@@ -125,4 +126,37 @@ const deleteUserTopicAndImages = async (req, res, nxt) => {
     res.redirect("/admin")
   }
 }
-module.exports = { admin, users, admins, allAdminImages, allAdminTopics, deleteUserTopicAndImages }
+
+const searchUser = async (req, res) => {
+  try {
+    const users = req.cookies.user
+    const search = req.body.search
+    const find = await user.findOne({ _id: users })
+    if (find.role == "admin") {
+      const reg = await user.find({ username: { $regex: search, $options: "i" } })
+      res.render("users", { reg, layout: "adminlay" });
+    }
+
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const searchAdmin = async (req, res) => {
+  try {
+    const users = req.cookies.user
+    const search = req.body.search
+    const find = await user.findOne({ _id: users })
+    if (find.role == "admin") {
+      const prem = await user.find({ $and: [{ role: "admin" }, { username: { $regex: search, $options: "i" } }] })
+      res.render("admins", { prem, layout: "adminlay" });
+    }
+
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = { admin, users, admins, allAdminImages, allAdminTopics, deleteUserTopicAndImages, searchUser, searchAdmin }
