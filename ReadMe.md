@@ -66,8 +66,8 @@ Backend:
 - If error detected, email me
 - Pls note that another user can't see your topics only the ADMIN has rights
 - If no user you will be redirected to register
-- Admin credentials are in the .env file
-- NB: the admin must be created with the specific credentials, feel free to change them (i.e Register-user)
+- Admin credentials are in the .env file (feel free to change them )
+- The admin must be created (i.e /register) with the specific credentials 
 - Make sure you create a user before you enter the client
 - Click on the Blog system logo at the uppermost left of the page to Login/Register
 - React should run on port 3000 (if you feel the need to change, change it on the CORS also) 
