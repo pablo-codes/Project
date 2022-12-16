@@ -38,7 +38,7 @@
 
 # How to View Topics
 
-     1 Hover on NAV products or click view button in all-Topics
+     1 Hover on NAVBAR products in Client or click view button in all-Topics Server
 
 ## 👷 Built with!
 
@@ -70,6 +70,7 @@ Backend:
 - NB: the admin must be created with the specific credentials, feel free to change them (i.e Register-user)
 - Make sure you create a user before you enter the client
 - Click on the Blog system logo at the uppermost left of the page to Login/Register
+- React should run on port 3000 (if you feel the need to change, change it on the CORS also) 
 - If error check console
   #� �P�r�o�j�e�c�t�
   �
