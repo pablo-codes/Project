@@ -29,11 +29,7 @@ const users = async (req, res) => {
 
   try {
     const reg = await user.find({ role: "user" });
-    // const getDate = reg.map((el) => {
-    //   return { date: new Date(el.createdAt).toLocaleString() }
-    // })
-
-    // console.log(getDate)
+    
 
     res.render("users", { reg, layout: "adminlay" })
   } catch (error) {

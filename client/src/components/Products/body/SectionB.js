@@ -8,9 +8,12 @@ const SectionB = (props) => {
 
 
   function change() {
+    let pics = props.image[1]
+    if (pics) {
 
-    setPicture(require(`../../../images/dynamic/${props.image[1]}`))
+      setPicture(require(`../../../images/dynamic/${pics}`))
 
+    }
   }
 
   return (

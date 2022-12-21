@@ -60,8 +60,8 @@ const NavBar = (props) => {
                       {products && products.map((el) => {
 
                         return <Link to={"/products/:" + el._id}>
-                          <li className="col">
-                            <figure className="rounded lift d-none d-lg-block"><img src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" /></figure>
+                          <li className="col" key={el._id}>
+                            <figure className="rounded lift d-none d-lg-block"><img style={{ width: "70%", height: "70%" }} src={require(`../../../images/dynamic/${el.gridfilename[0]}`)} alt="" /></figure>
                             <span className="d-lg">{el.title}</span>
                           </li>
                         </Link>

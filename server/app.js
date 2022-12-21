@@ -1,22 +1,17 @@
-
-const fs = require("fs");
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose")
 const exphbs = require("express-handlebars");
 const path = require('path')
-const app = express();
-const user = require("./models/schema")
-const cors = require('cors')
+const dotenv = require('dotenv')
+const cookie = require('cookie-parser')
 const product = require('./models/productSchema')
-const gridFile = require('./models/GridFile')
+const multer = require('multer')
+const cors = require('cors')
 const auth = require('./middleware/auth')
 const adminauth = require('./middleware/adminauth')
-const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken')
-const cookie = require('cookie-parser')
-const dotenv = require('dotenv')
-const multer = require('multer')
-const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage } = require('./controllers/Usercontroller')
+
+const { index, allTopics, getTopic, allImages, addTopic, getImages, updateTopic, deleteTopicAndImages, searchImages, searchTopics, addImage, getALLImages, updateImage, deleteImage, allBlogs } = require('./controllers/Usercontroller')
 const { admin, admins, users, allAdminImages, allAdminTopics, deleteUserTopicAndImages, searchUser, searchAdmin } = require('./controllers/Admincontroller')
 const { login, register, registerUser, loginUser } = require("./controllers/LoginController")
 
@@ -71,11 +66,10 @@ app.get("/", auth, index);
 app.get('/admin', adminauth, admin)
 
 app.get("/all-blogs", async (req, res) => {
-
   const all = await product.find({})
 
 
-  res.send(all);
+  res.send(all)
 })
 
 app.get("/all-topics", auth, allTopics)

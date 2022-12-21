@@ -1,8 +1,11 @@
 * {
   box-sizing: border-box;
+
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+html {
+  height: 100%;
+}
 a {
   text-decoration: none;
   color: initial;
@@ -10,13 +13,14 @@ a {
 
 .container {
   display: flex;
-  min-height: 870px;
+  height: 100%;
 }
 
 .side-bar {
   width: 20%;
   background-color: black;
-  min-height: 500px;
+  height: 100%;
+  position: fixed;
   background-color: white;
 }
 
@@ -37,7 +41,8 @@ a {
 .body-body {
   width: 80%;
   background-color: #f2f2f2;
-  min-height: 500px;
+  min-height: 100%;
+  margin-left: 20%;
   display: flex;
   flex-direction: column;
 }
@@ -45,13 +50,13 @@ a {
 .top-body {
   background: linear-gradient(to right, rgb(80, 80, 191), rgb(85, 85, 152));
   width: 100%;
-  height: 37%;
+  min-height: 37%;
   display: flex;
   align-items: flex-start;
   /* justify-content: center; */
   color: white;
   font-size: x-large;
-  padding-left: 25px;
+  padding-left: 10%;
 }
 
 .top-body-1 {
@@ -85,12 +90,9 @@ a {
   font-size: larger;
 }
 
-/* .search-vg {
-    position: relative;
-    right: 35px;
-    top: 7px;
-    width: ;
-} */
+.search-vg {
+  height: 100%;
+}
 
 .inside-body {
   height: 63%;
@@ -220,20 +222,36 @@ a {
 
 .searchplus {
   display: flex;
-  width: 50%;
+  width: 30%;
   height: 25%;
   position: relative;
   top: 50%;
-  right: 50%;
+  right: 40%;
   background-color: white;
 }
 
 .searchplus button {
-  top: 5%;
   position: absolute;
-  left: 80%;
   width: 20%;
   background-color: black;
+}
+.next {
+  position: relative;
+
+  top: 10%;
+
+  display: inline;
+}
+.next button {
+  background-color: #04aa6d;
+  color: white;
+  margin-left: 1%;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+.next button:hover {
+  background-color: purple;
 }
 */ table {
   width: 75%;
@@ -241,6 +259,7 @@ a {
 }
 body {
   margin: 0%;
+  height: 100%;
 }
 table thead {
   background-color: rgb(85, 85, 152);
@@ -344,7 +363,20 @@ label {
   display: inline-block;
 }
 
+input[type="file"] {
+  width: 50%;
+}
+
 /* Style the submit button */
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
 input[type="submit"] {
   background-color: #04aa6d;
   color: white;
@@ -395,29 +427,6 @@ form {
 }
 .sign:hover {
   color: purple;
-}
-.alert-div {
-  display: flex;
-  background-color: rgb(12, 191, 12);
-  width: 35%;
-  height: 50px;
-  border-radius: 5px;
-  color: white;
-  justify-content: center;
-  column-gap: 1%;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.alert-div .sp1 {
-  text-align: center;
-  width: 80%;
-}
-
-.alert-div .sp2 {
-  text-align: center;
-  width: 10%;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

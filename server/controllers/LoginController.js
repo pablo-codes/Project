@@ -121,7 +121,7 @@ const registerUser = async (req, res) => {
 
 }
 
-// Sign in to a loser
+// Sign in to a user
 const loginUser = async (req, res, next) => {
 
 
@@ -187,7 +187,7 @@ const loginUser = async (req, res, next) => {
           res.render("login", { check });
         }
       } else {
-        console.log("err")
+        console.log("error")
       }
 
     }

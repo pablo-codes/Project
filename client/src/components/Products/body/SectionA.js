@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BiCalendarAlt, BiComment, BiHeart, BiUser } from 'react-icons/bi'
 import { BsCalendar } from 'react-icons/bs'
 
@@ -6,11 +6,19 @@ const SectionA = (props) => {
   {/* eslint-disable jsx-a11y/anchor-is-valid */ }
   // const picget = require(`../../../images/${pic}`)
   //   console.log(pic)
+  const [picture, setPicture] = useState("")
+
   function change() {
     let pics = props.image[0]
-    console.log(pics)
-    const pic = require(`../../../images/dynamic/${props.image[0]}`)
-    document.getElementById('images').style.backgroundImage = `url(${pic})`
+    if (pics) {
+
+
+      setPicture(require(`../../../images/dynamic/IMG-20220925-WA00831.jpg`))
+      document.getElementById('images').style.backgroundImage = `url(${picture})`
+    }
+    else {
+      console.log(pics)
+    }
   }
   const getDate = new Date(props.date).toLocaleString()
 
