@@ -32,7 +32,7 @@ const index = async (req, res) => {
 const allTopics = async (req, res, next) => {
     try {
         const id = req.cookies.user
-        const page = req.query.page
+        const page = req.query.pages
         let news = Number(page)
 
 
@@ -46,7 +46,7 @@ const allTopics = async (req, res, next) => {
                 return news + 1
             }
         }
-        console.log(newsplus())
+
         const newsminus = () => {
             if (news - 1 > 0) {
                 return news - 1
@@ -88,13 +88,10 @@ const allTopics = async (req, res, next) => {
 
             fill = arr.map((el) => { return { num: el } })
 
-            res.render("all-topics", { all, fill, sum });
-        }
-        else if (!news) {
-            fill = [{ num: 2 }]
 
             res.render("all-topics", { all, fill, sum });
-        } else {
+        }
+        else {
             res.send('page does not exist')
         }
 
@@ -161,25 +158,7 @@ const getTopic = async (req, res) => {
     res.send(all)
 }
 const allBlogs = async (req, res) => {
-    const edit = await gridFile.find({})
 
-    edit.map(async (el) => {
-        const GridFile = await gridFile.findById(el.id)
-
-        if (GridFile) {
-
-            // put in the relative path of the folder(i.e local folder, internet folder)
-            const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${GridFile.filename}`))
-            await GridFile.download(fileStream)
-
-
-
-
-        } else {
-            // file not found
-            res.status(404).json({ error: 'file not found' })
-        }
-    })
     const all = await product.find({})
 
 
@@ -189,8 +168,8 @@ const allBlogs = async (req, res) => {
 const allImages = async (req, res) => {
     try {
         const id = req.cookies.user
-        const news = req.query.page
-
+        const page = req.query.pages
+        let news = Number(page)
 
         const all = await gridFile.find({ aliases: id }).skip(news * 5 - 5).limit(5)
         const next = await gridFile.find({ aliases: id })
@@ -264,10 +243,10 @@ const allImages = async (req, res) => {
 // Add's a topic 
 const addTopic = async (req, res) => {
     try {
-
+        const { title, description, features } = req.body
         const files = req.files
         console.log(files)
-        if (files.length > 0) {
+        if (files.length > 0 && title && description && features) {
             const body = req.body;
             const id = req.cookies.user
             const get = await user.findOne({ _id: id })
@@ -309,6 +288,25 @@ const addTopic = async (req, res) => {
         } else {
             res.send("fill all the details")
         }
+        const edit = await gridFile.find({})
+
+        edit.map(async (el) => {
+            const GridFile = await gridFile.findById(el.id)
+
+            if (GridFile) {
+
+                // put in the relative path of the folder(i.e local folder, internet folder)
+                const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${GridFile.filename}`))
+                await GridFile.download(fileStream)
+
+
+
+
+            } else {
+                // file not found
+                res.status(404).json({ error: 'file not found' })
+            }
+        })
 
     } catch (error) {
         res.redirect("/")

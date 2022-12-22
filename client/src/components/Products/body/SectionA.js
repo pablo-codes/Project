@@ -13,7 +13,7 @@ const SectionA = (props) => {
     if (pics) {
 
 
-      setPicture(require(`../../../images/dynamic/IMG-20220925-WA00831.jpg`))
+      setPicture(require(`../../../images/dynamic/${pics}`))
       document.getElementById('images').style.backgroundImage = `url(${picture})`
     }
     else {
