@@ -139,15 +139,6 @@ const AddUser = () => {
           </div>
           <div className={css.row}>
             <div className={css.col25} >
-              <label htmlFor="lname">Author</label>
-            </div>
-
-            <div className={css.col75}>
-              <input type="text" id="lname" name="author" onChange={handleInputChange} value={products.author} placeholder="Your username" />
-            </div>
-          </div>
-          <div className={css.row}>
-            <div className={css.col25} >
               <label htmlFor="image"> Image</label>
             </div>
             <div className={css.col25}>

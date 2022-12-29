@@ -25,7 +25,7 @@ dotenv.config({ path: path.join(__dirname, './config.env') })
 mongoose.connect("mongodb://127.0.0.1:27017/blogsystemNG").then(() => {
   console.log("DB Connected Successfully")
 }).catch((err) => {
-  console.log("connection failure")
+  console.log("connection failed")
 })
 
 

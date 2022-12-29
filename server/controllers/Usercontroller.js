@@ -19,6 +19,7 @@ const index = async (req, res) => {
         const allImages = await gridFile.count({ aliases: users })
         const username = topics.username.toUpperCase()
 
+
         res.render("index", { alltotal, topics, allImages, username });
     } catch (error) {
         console.log(error)
@@ -41,15 +42,16 @@ const allTopics = async (req, res, next) => {
         const next = await product.find({ author: get.username })
         const nextnew = Math.ceil(next.length / 5)
 
-        const newsplus = () => {
-            if (news + 1 <= nextnew) {
-                return news + 1
-            }
-        }
+
 
         const newsminus = () => {
             if (news - 1 > 0) {
                 return news - 1
+            }
+        }
+        const newsplus = () => {
+            if (news + 1 <= nextnew) {
+                return news + 1
             }
         }
         const newsplusplus = () => {
@@ -58,24 +60,22 @@ const allTopics = async (req, res, next) => {
             }
         }
         let arr = []
-        if (!newsminus() && !newsplus()) {
-            arr = []
-        } else if (!newsplus() && !newsplusplus()) {
-            arr = [newsminus()]
-        }
-        else if (!newsminus && !newsplusplus()) {
-            arr = [newsplus()]
-
-        } else if (!newsminus()) {
-            arr = [newsplus(), newsplusplus()]
+        if (!newsminus()) {
+            if (!newsplus()) {
+                arr = []
+            } else if (!newsplusplus()) {
+                arr = [newsplus()]
+            }
+            else {
+                arr = [newsplus(), newsplusplus()]
+            }
         } else if (!newsplus()) {
             arr = [newsminus()]
         } else if (!newsplusplus()) {
-            arr = [newsminus(), newsplus()]
+            arr = []
         } else {
             arr = [newsminus(), newsplus(), newsplusplus()]
         }
-
         let fill = []
         let sum = []
         for (let i = 0; i < nextnew; i++) {
@@ -89,7 +89,7 @@ const allTopics = async (req, res, next) => {
             fill = arr.map((el) => { return { num: el } })
 
 
-            res.render("all-topics", { all, fill, sum });
+            res.render("all-topics", { all, fill, sum, page });
         }
         else {
             res.send('page does not exist')
@@ -153,7 +153,7 @@ const getTopic = async (req, res) => {
     }
     )
 
-    const all = await product.findOne({ _id: newfind[1] })
+    const all = await product.findOne({ _id: newfind[1] }).select({ author: 0 })
 
     res.send(all)
 }
@@ -175,41 +175,42 @@ const allImages = async (req, res) => {
         const next = await gridFile.find({ aliases: id })
         const nextnew = Math.ceil(next.length / 5)
 
+        const newsminus = () => {
+            if (news - 1 > 0) {
+                return news - 1
+            }
+        }
         const newsplus = () => {
             if (news + 1 <= nextnew) {
                 return news + 1
             }
         }
 
-        const newsminus = () => {
-            if (news - 1 > 0) {
-                return news - 1
-            }
-        }
         const newsplusplus = () => {
             if (news + 2 <= nextnew) {
                 return news + 2
             }
         }
-        let arr = []
-        if (!newsminus() && !newsplus()) {
-            arr = []
-        } else if (!newsplus() && !newsplusplus()) {
-            arr = [newsminus()]
-        }
-        else if (!newsminus && !newsplusplus()) {
-            arr = [newsplus()]
 
-        } else if (!newsminus()) {
-            arr = [newsplus(), newsplusplus()]
+        let arr = []
+
+
+        if (!newsminus()) {
+            if (!newsplus()) {
+                arr = []
+            } else if (!newsplusplus()) {
+                arr = [newsplus()]
+            }
+            else {
+                arr = [newsplus(), newsplusplus()]
+            }
         } else if (!newsplus()) {
             arr = [newsminus()]
         } else if (!newsplusplus()) {
-            arr = [newsminus(), newsplus()]
+            arr = []
         } else {
             arr = [newsminus(), newsplus(), newsplusplus()]
         }
-
         let fill = []
         let sum = []
         for (let i = 0; i < nextnew; i++) {
@@ -221,14 +222,10 @@ const allImages = async (req, res) => {
         if (news <= nextnew) {
 
             fill = arr.map((el) => { return { num: el } })
-
-            res.render("all-images", { all, fill, sum });
+            console.log(fill)
+            res.render("all-images", { all, fill, sum, page });
         }
-        else if (!news) {
-            fill = [{ num: 2 }]
-
-            res.render("all-images", { all, fill, sum });
-        } else {
+        else {
             res.send('page does not exist')
         }
 
@@ -245,7 +242,6 @@ const addTopic = async (req, res) => {
     try {
         const { title, description, features } = req.body
         const files = req.files
-        console.log(files)
         if (files.length > 0 && title && description && features) {
             const body = req.body;
             const id = req.cookies.user
@@ -275,38 +271,24 @@ const addTopic = async (req, res) => {
                     // upload file to gridfs
                     const GridFile = new gridFile({ filename: newname, aliases: req.cookies.user })
                     const uploaded = await GridFile.upload(fileStream)
-                    fs.unlinkSync(file.path)
+                    fs.unlinkSync(path.join(__dirname, '../files'))
 
                     const gridid = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfileid: uploaded.id } }, { upsert: true })
                     const gridname = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfilename: uploaded.filename } }, { upsert: true })
+                    const Gridile = await gridFile.findById(uploaded.id)
+                    const downloadStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${uploaded.filename}`))
+                    await Gridile.download(downloadStream)
                 }
 
             })
 
             await Promise.all(promises)
-            res.redirect("all-topics?page=1")
+            res.redirect("all-topics?pages=1")
         } else {
             res.send("fill all the details")
         }
-        const edit = await gridFile.find({})
-
-        edit.map(async (el) => {
-            const GridFile = await gridFile.findById(el.id)
-
-            if (GridFile) {
-
-                // put in the relative path of the folder(i.e local folder, internet folder)
-                const fileStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${GridFile.filename}`))
-                await GridFile.download(fileStream)
 
 
-
-
-            } else {
-                // file not found
-                res.status(404).json({ error: 'file not found' })
-            }
-        })
 
     } catch (error) {
         res.redirect("/")
@@ -339,15 +321,17 @@ const addImage = async (req, res) => {
                 // upload file to gridfs
                 const GridFile = new gridFile({ filename: newname, aliases: id })
                 const uploaded = await GridFile.upload(fileStream)
-                fs.unlinkSync(file.path)
-
+                fs.unlinkSync(path.join(__dirname, '../files'))
+                const Gridile = await gridFile.findById(uploaded.id)
+                const downloadStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${uploaded.filename}`))
+                await Gridile.download(downloadStream)
 
             }
 
         })
 
         await Promise.all(promises)
-        res.redirect("/all-images?page=1")
+        res.redirect("/all-images?pages=1")
     } else {
         res.send("fill all the details")
     }
@@ -442,12 +426,12 @@ const deleteImage = async (req, res) => {
             fs.unlinkSync(path.join(__dirname, `../../client/src/images/dynamic/${get.filename}`))
 
             await gridFile.findByIdAndDelete(newfind[1])
-            res.redirect(`/all-images?page=1`)
+            res.redirect(`/all-images?pages=${page}`)
         }
     } catch (error) {
         const page = req.query.page
         console.log(error)
-        res.redirect(`/all-images?page=1`)
+        res.redirect(`/all-images?pages=${page}`)
     }
 }
 
@@ -501,16 +485,16 @@ const deleteTopicAndImages = async (req, res) => {
             const del = await product.findOneAndDelete({ _id: newfind[1] })
 
             if (searching.role == "admin") {
-                res.redirect('/admin-topics?page=1')
+                res.redirect('/admin-topics')
             }
             else {
-                res.redirect(`/all-topics?page=1`)
+                res.redirect(`/all-topics?pages=${page}`)
             }
         }
     } catch (err) {
         const page = req.query.page
         console.log(err)
-        res.redirect(`/all-topics?page=1`)
+        res.redirect(`/all-topics?pages=${page}`)
     }
 }
 
