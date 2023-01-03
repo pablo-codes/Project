@@ -104,15 +104,19 @@ app.get("/admins", adminauth, admins)
 app.get("/users", adminauth, users)
 
 app.get("/admin-topic", adminauth, allAdminTopics)
+
 app.get("/admin-images", adminauth, allAdminImages)
 
 app.get("/delete/:id", adminauth, deleteUserTopicAndImages)
 
 app.get("/view-image/:id/:name", upload.any(), getImages)
+
 app.post("/add-topic", upload.any())
 
 app.put("/edit-topic/:id", updateTopic)
+
 app.put("/edit-image/:id", updateImage)
+
 app.get("/get-image/:id", getALLImages)
 
 app.get("/delete-topic/:id", deleteTopicAndImages)

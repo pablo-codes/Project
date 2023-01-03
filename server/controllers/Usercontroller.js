@@ -39,6 +39,9 @@ const allTopics = async (req, res, next) => {
 
         const get = await user.findOne({ _id: id })
         const all = await product.find({ author: get.username }).skip(news * 5 - 5).limit(5)
+        all.forEach(element => {
+            element.page = page
+        });
         const next = await product.find({ author: get.username })
         const nextnew = Math.ceil(next.length / 5)
 
@@ -88,6 +91,10 @@ const allTopics = async (req, res, next) => {
 
             fill = arr.map((el) => { return { num: el } })
 
+
+            res.render("all-topics", { all, fill, sum, page });
+        } else if (news > nextnew) {
+            fill = arr.map((el) => { return { num: 1 } })
 
             res.render("all-topics", { all, fill, sum, page });
         }
@@ -159,6 +166,13 @@ const getTopic = async (req, res) => {
 }
 const allBlogs = async (req, res) => {
 
+    const edit = await gridFile.find()
+    edit.map(async (el) => {
+        const Gridile = await gridFile.findById(el.id)
+        const downloadStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${el.filename}`))
+        await Gridile.download(downloadStream)
+    })
+
     const all = await product.find({})
 
 
@@ -172,6 +186,10 @@ const allImages = async (req, res) => {
         let news = Number(page)
 
         const all = await gridFile.find({ aliases: id }).skip(news * 5 - 5).limit(5)
+        all.forEach(element => {
+            element.page = page
+        });
+
         const next = await gridFile.find({ aliases: id })
         const nextnew = Math.ceil(next.length / 5)
 
@@ -222,7 +240,11 @@ const allImages = async (req, res) => {
         if (news <= nextnew) {
 
             fill = arr.map((el) => { return { num: el } })
-            console.log(fill)
+
+            res.render("all-images", { all, fill, sum, page });
+        } else if (news > nextnew) {
+            fill = arr.map((el) => { return { num: 1 } })
+
             res.render("all-images", { all, fill, sum, page });
         }
         else {
@@ -271,18 +293,17 @@ const addTopic = async (req, res) => {
                     // upload file to gridfs
                     const GridFile = new gridFile({ filename: newname, aliases: req.cookies.user })
                     const uploaded = await GridFile.upload(fileStream)
-                    fs.unlinkSync(path.join(__dirname, '../files'))
 
-                    const gridid = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfileid: uploaded.id } }, { upsert: true })
-                    const gridname = await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfilename: uploaded.filename } }, { upsert: true })
-                    const Gridile = await gridFile.findById(uploaded.id)
-                    const downloadStream = fs.createWriteStream(path.join(__dirname, `../../client/src/images/dynamic/${uploaded.filename}`))
-                    await Gridile.download(downloadStream)
+
+                    await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfileid: uploaded.id } }, { upsert: true })
+                    await product.findOneAndUpdate({ title: req.body.title }, { $push: { gridfilename: uploaded.filename } }, { upsert: true })
+
                 }
 
             })
 
             await Promise.all(promises)
+            fs.unlinkSync(path.join(__dirname, '../files'))
             res.redirect("all-topics?pages=1")
         } else {
             res.send("fill all the details")
@@ -408,8 +429,7 @@ const deleteImage = async (req, res) => {
     try {
         const id = req.cookies.user
         const find = req.params.id
-        const page = req.query.page
-
+        const page = req.query.pages
 
 
         const newfind = find.split(":", 2)
@@ -429,7 +449,7 @@ const deleteImage = async (req, res) => {
             res.redirect(`/all-images?pages=${page}`)
         }
     } catch (error) {
-        const page = req.query.page
+        const page = req.query.pages
         console.log(error)
         res.redirect(`/all-images?pages=${page}`)
     }
@@ -441,7 +461,7 @@ const deleteTopicAndImages = async (req, res) => {
     try {
         const find = req.params.id
         const give = req.cookies.user
-        const page = req.query.page
+        const page = req.query.pages
         const newfind = find.split(":", 2)
         const searching = await user.findOne({ _id: give })
 
