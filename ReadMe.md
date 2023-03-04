@@ -13,6 +13,13 @@
 
 ## Pls read the author notes
 
+# To run code
+
+1 Change directory (cd) to the Server/Client
+2 Run npm install
+3 When installation is done,run npm start
+NB: This must be done in both the server and client directories
+
 # How to create user
 
     1 Ensure email is unique
@@ -67,7 +74,7 @@ Backend:
 ## Author's Note
 
 - The basis of the code is the server the client is just showing how the data can be rendered
-- If error detected, email me
+- If error is detected,please send me an email 
 - Pls note that another user can't see your topics only the ADMIN has rights
 - If no user you will be redirected to register
 - Admin credentials are in the .env file (feel free to change them )
@@ -76,7 +83,4 @@ Backend:
 - A Topic/Image must be created before the all topics/images page renders
 - Click on the Blog system logo at the uppermost left of the page to Login/Register
 - React should run on port 3000 (if you feel the need to change, change it on the CORS also)
-- If error check console
-  #� �P�r�o�j�e�c�t�
-  �
-  �
+- If there is any error pls check the console
