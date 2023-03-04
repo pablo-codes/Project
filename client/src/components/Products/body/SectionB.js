@@ -5,25 +5,19 @@ import { BiSearchAlt } from 'react-icons/bi'
 const SectionB = (props) => {
   {/* eslint-disable jsx-a11y/anchor-is-valid */ }
   const [picture, setPicture] = useState("")
+  let pics = props.image[1]
 
 
-  function change() {
-    let pics = props.image[1]
-    if (pics) {
 
-      setPicture(require(`../../../images/dynamic/${pics}`))
-
-    }
-  }
 
   return (
-    <section className="wrapper bg-light" onMouseEnter={change}  >
+    <section className="wrapper bg-light"   >
       <div className="container py-14 py-md-16">
         <div className="row gx-lg-8 gx-xl-12">
           <div className="col-lg-8">
             <div className="blog single">
               <div className="card">
-                <figure className="card-img-top"><img id='images' src={picture} alt="" /></figure>
+                <figure className="card-img-top"><img id='images' src={require(`../../../images/dynamic/${pics}`)} alt="" /></figure>
                 <div className="card-body">
                   <div className="classic-view">
                     <article className="post">

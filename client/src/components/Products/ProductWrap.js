@@ -21,13 +21,12 @@ const ProductWrap = () => {
     createdAt: ""
   };
   const [products, setProducts] = useState(initialProducts);
-
-
+  const [state, setState] = useState(false)
   const response = (id) => {
     blogService.get(id)
       .then(response => {
         setProducts(response.data);
-        console.log(response.data)
+        setState(true)
       })
       .catch(e => {
         console.log(e);
@@ -42,10 +41,15 @@ const ProductWrap = () => {
   }, [id]);
   return (
     <div>
+      {(function () {
+        if (state === true) {
+          return <Product id={products._id} title={products.title}
 
-      <Product id={products._id} title={products.title}
-        description={products.description} features={products.features}
-        author={products.author} date={products.createdAt} image={pics} />
+            description={products.description} features={products.features}
+            author={products.author} date={products.createdAt} image={pics} />
+        }
+      })(state)}
+
 
 
 

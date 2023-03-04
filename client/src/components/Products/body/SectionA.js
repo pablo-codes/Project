@@ -8,23 +8,29 @@ const SectionA = (props) => {
   //   console.log(pic)
   const [picture, setPicture] = useState("")
 
+  let state = props.state
+
+  let pics = props.image[0]
   function change() {
-    let pics = props.image[0]
+
+
     if (pics) {
 
 
       setPicture(require(`../../../images/dynamic/${pics}`))
       document.getElementById('images').style.backgroundImage = `url(${picture})`
     }
-    else {
-      console.log(pics)
-    }
+
+
   }
   const getDate = new Date(props.date).toLocaleString()
 
 
   return (
-    <section id="images" className="wrapper image-wrapper bg-image bg-overlay text-white" onMouseEnter={change}  >
+    <section id="images" className="wrapper image-wrapper bg-image bg-overlay text-white" style={{
+      backgroundImage: `url(${require(`../../../images/dynamic/${pics}`)})`
+    }
+    }   >
 
       <div className="container pt-18 pb-15 pt-md-20 pb-md-19 text-center">
         <div className="row">
