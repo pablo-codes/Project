@@ -15,10 +15,10 @@
 
 # To run code
 
-1 Change directory (cd) to the Server/Client
-2 Run npm install
-3 When installation is done,run npm start
-NB: This must be done in both the server and client directories
+    1 Change directory (cd) to the Server/Client
+    2 Run npm install
+    3 When installation is done,run npm start
+    NB: This must be done in both the server and client directories
 
 # How to create user
 
@@ -74,7 +74,7 @@ Backend:
 ## Author's Note
 
 - The basis of the code is the server the client is just showing how the data can be rendered
-- If error is detected,please send me an email 
+- If error is detected,please send me an email
 - Pls note that another user can't see your topics only the ADMIN has rights
 - If no user you will be redirected to register
 - Admin credentials are in the .env file (feel free to change them )
