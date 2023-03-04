@@ -1,6 +1,4 @@
 /server/node_modules
-/server/package-lock.json
-/client/package-lock.json
 /files
 /client/node_modules
 /client/src/images/dynamic
