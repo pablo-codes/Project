@@ -19,14 +19,20 @@ const { login, register, registerUser, loginUser } = require("./controllers/Logi
 const upload = multer({ dest: path.join(__dirname, '../files') })
 dotenv.config({ path: path.join(__dirname, './config.env') })
 
-
-
-
-mongoose.connect("mongodb://127.0.0.1:27017/blogsystemNG").then(() => {
+mongoose.connect('mongodb://127.0.0.1:27017/myapp').then(() => {
   console.log("DB Connected Successfully")
 }).catch((err) => {
-  console.log("connection failed")
+  console.log("Mongo not enabled locally")
+  mongoose.connect("mongodb+srv://okpani:pablo570@pablo.jdoepos.mongodb.net/test").then(() => {
+    console.log("DB Connected Successfully")
+  }).catch((err) => {
+    console.log("No internet connection")
+    console.log(err)
+  })
 })
+
+
+
 
 
 
