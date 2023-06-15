@@ -1,5 +1,7 @@
-/server/node_modules
-/files
-/client/node_modules
+/server/node_modules/
+/server/config.env
+/files/
+/client/node_modules/
 /client/src/images/dynamic
+
 
